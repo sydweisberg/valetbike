@@ -1,14 +1,14 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      Welcome to Syd's ValetBike!
-    </div>
     <button type="btn-primary">
-      <%= link_to 'Bike List', bikes_path() %>
+      <%= link_to 'Back', :back %>
     </button>
+    <div class="section-title">
+      Bike List
+    </div>
     <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+      <% if @bikes.present? %>
+        <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
       <% else %>
       <div class="empty">
         No stations found.
