@@ -3,9 +3,9 @@
     <div class="section-title">
       Welcome to Syd's ValetBike!
     </div>
-    <button type="btn-primary">
-      <%= link_to 'Bike List', bikes_path() %>
-    </button>
+    <div class="flexbox">
+      <%= link_to 'View Bike List', bikes_path() %>
+    </div>
     <div class="flexbox vertical stretch">
       <% if @stations.present? %>
         <%= render(partial: "stations/row", collection: @stations, as: :station) %>
