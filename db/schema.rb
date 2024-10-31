@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_31_090719) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_31_180838) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.integer "charge"
+  end
+
+  create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "identifier"
+    t.bigint "user_id", null: false
+    t.bigint "bike_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean "over_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_rentals_on_bike_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
   create_table "stations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -24,6 +39,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_090719) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "capacity"
   end
 
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "identifier"
+    t.string "username"
+    t.string "first"
+    t.string "last"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "rentals", "bikes"
+  add_foreign_key "rentals", "users"
 end
