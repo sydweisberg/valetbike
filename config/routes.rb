@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/rentals', to: 'rentals#index'
   get '/users', to: 'users#index'
   get '/about', to: 'about#index'
-  get '/signup', to: 'signup#index'
+  get '/signup', to: 'users#new', as: 'signup'
+  resources :users, only: [:create]
+  get '/users/:id', to: 'users#show', as: 'user'
   get '/signin', to: 'signin#index'
 end
