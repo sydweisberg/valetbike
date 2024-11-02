@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/bikes', to: 'bikes#index'
   get '/stations', to: 'stations#index'
   get '/stations/:id', to: 'stations#show', as: 'station'
+  get '/stationsmap', to: 'stations#map', as: 'stationmap'
   get '/rentals', to: 'rentals#index'
   get '/users', to: 'users#index'
   get '/about', to: 'about#index'
