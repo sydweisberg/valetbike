@@ -1,8 +1,9 @@
 
 <ul>
-  <li class="active"><%= link_to('Home', root_path) %></li>
-  <li><%= link_to('About', about_path) %></li>
-  <li><%= link_to('Rent', rentals_path) %></li>
-  <li><%= link_to('Sign In', signin_path) %></li>
+  <li><%= link_to(image_tag('bike_icon.png', alt: 'Bike icon'), root_path) %></li>
   <li><%= link_to('Sign Up', signup_path) %></li>
+  <li><%= link_to('Sign In', signin_path) %></li>
+  <li><%= link_to('Rent', stationmap_path) %></li>
+  <li><%= link_to('About', about_path) %></li>
+  <li class="active"><%= link_to('Home', root_path) %></li>
 </ul>

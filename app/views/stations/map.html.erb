@@ -5,16 +5,10 @@
       Rent a Bike!
     </div>
     <div class="flexbox">
-      <%= link_to 'Map View', stationmap_path() %>
+      <%= link_to 'List View', stations_path() %>
     </div>
     <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
+        <%= render(partial: 'layouts/map') %>
     </div>
 	</div>
 </div>
