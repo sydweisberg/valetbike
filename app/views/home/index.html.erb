@@ -8,7 +8,7 @@
                 Welcome to Valet Bike, Riders!
             </div>
             <div class="button">
-                <%= link_to('Rent a Bike!', rentals_path) %>
+                <%= link_to('Rent a Bike!', stationmap_path) %>
             </div><br>
             <div>
                 <h1>About Valet Bike</h1>
@@ -19,10 +19,9 @@
         </div>
         <div class="centered_column">
             <h1>Bike Share Locations</h1>
-            <div style="text-decoration:none; overflow:hidden;max-width:100%;width:500px;height:500px;"><div id="g-mapdisplay" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=northampton&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="embedded-map-code" href="https://kbj9qpmy.com/bp" id="grab-map-authorization">Internet Provider</a><style>#g-mapdisplay .text-marker{}.map-generator{max-width: 100%; max-height: 100%; background: none;</style></div>
+            <%= render(partial: 'layouts/map') %>
         </div>
     </div>
 </div>
 </div>
 </div>
-
