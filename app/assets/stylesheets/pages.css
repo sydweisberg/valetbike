@@ -13,11 +13,15 @@
   margin-left: 1.4em;
 }
 
-.page-section .section-title {
+.page-section .section-title, .page-section .section-title-centered {
   font-family: var(--title-font);
   font-weight: 500;
   font-size: 2.5em;
   margin-bottom: 1em;
+}
+
+.section-title-centered {
+  align-self: center;
 }
 
 .record-row {
