@@ -1,19 +1,22 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
+    <div class="section-title-centered">
       Rent a Bike!
     </div>
-    <div class="flexbox">
-      <%= link_to 'Map View', stationmap_path() %>
-    </div>
+    <%= render(partial: 'stations/toggle') %>
+    <br>
     <div class="flexbox vertical stretch">
-      <% if @stations.present? %>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+      <% if @view == 'map' %>
+        <%= render(partial: 'layouts/map') %>
       <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
+        <% if @stations.present? %>
+          <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+        <% else %>
+        <div class="empty">
+          No stations found.
+        </div>
+        <% end %>
       <% end %>
     </div>
 	</div>
