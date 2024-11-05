@@ -1,0 +1,25 @@
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: large;
+}
+
+.field {
+    border-radius: 10px;
+    border-width: 2px;
+}
+
+.submit{
+    font-size: medium;
+    border-radius: 10px;
+    border-width: 2px;
+    background-color: #c4c4c4;
+    padding: 5px;
+}
+
+.submit:hover{
+    background-color: #5ec4e0;
+}
