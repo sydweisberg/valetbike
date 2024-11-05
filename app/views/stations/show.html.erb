@@ -2,19 +2,11 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      Station Info
+      <%= @station.name %> (<%= @station.address %>)
     </div>
-    <div class="flexbox">
-      <%= link_to 'Back', :back %>
-    </div>
-    <div class="flexbox">
-        Location: <%= @station.identifier %>: <%= @station.name %> (<%= @station.address %>)
-    </div>
-    <div class="flexbox">
-        Bike Count: <%= @station.docked_bikes.count %>
-    </div>
-    <div class="flexbox">
-        Docked Bike IDs: <%= @station.docked_bike_ids %>
-    </div>
+  </div>
+  <%= render(partial: "form") %>
+  <div class="button return-container">
+      <%= link_to 'Return to Map', :back %>
   </div>
 </div>
