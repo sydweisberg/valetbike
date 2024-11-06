@@ -7,32 +7,34 @@
       <% end %>
     </div>
   <% end %>
+  <div class="form-container">
+    <%# <%= @user.errors.full_messages.inspect %> 
 
-  <%= @user.errors.full_messages.inspect %>
-
-  <div>
-    <%= form.label :identifier %>
-    <%= form.text_field :identifier %>
-  </div>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
-  <div>
-    <%= form.label :first %>
-    <%= form.text_field :first %>
-  </div>
-  <div>
-    <%= form.label :last %>
-    <%= form.text_field :last %>
-  </div>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <%= form.submit "Sign Up" %>
-<% end %>
+    <div>
+      <%# <%= form.label :identifier %> 
+      <%= form.text_field :identifier, placeholder:"Enter Identifier" , class:"field" %>
+    </div>
+    <div>
+      <%# <%= form.label :email %> 
+      <%= form.email_field :email, placeholder:"Enter Email", class:"field" %>
+    </div>
+    <div>
+      <%# <%= form.label :first %> 
+      <%= form.text_field :first,  placeholder:"First Name" , class:"field" %>
+    </div>
+    <div>
+      <%# <%= form.label :last %> 
+      <%= form.text_field :last , placeholder:"Last Name" , class:"field"%>
+    </div>
+    <div>
+      <%# <%= form.label :username %> 
+      <%= form.text_field :username , placeholder:"Create a Username" , class:"field"%>
+    </div>
+    <div>
+      <%# <%= form.label :password %> 
+      <%= form.password_field :password , placeholder:"Create a Password" , class:"field"%>
+      <p class="subscript">Minimum of 8 characters</p> 
+    </div>
+    <%= form.submit "Join", class:"submit" %>
+  <% end %>
+</div>

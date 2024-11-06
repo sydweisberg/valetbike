@@ -1,0 +1,33 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font-size: large;
+}
+
+.field {
+    border-radius: 10px;
+    border-width: 2px;
+    width: 20rem;
+}
+
+.submit{
+    font-size: medium;
+    border-radius: 10px;
+    border-width: 2px;
+    background-color: #5ec4e0;
+    margin-top:10px;
+    padding: 7px;
+    width: 35%;
+    align-self: center;
+}
+
+.submit:hover{
+    background-color: #418ca0;
+}
+
+.subscript{
+    font-size: small;
+    color: #606060;
+    padding: 2px 7px;
+}
