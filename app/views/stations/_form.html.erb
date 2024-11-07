@@ -16,6 +16,17 @@
             No bikes currently avaliable at station.
             </div>
         <% end %>
-        <%#= form.submit "Sign Up" %>
+        <h1>
+            <strong>Select Ride Duration</strong>
+        </h1>
+        <%= form.select :end_time, [["15 minutes", 15.minutes.from_now],
+                                    ["30 minutes", 30.minutes.from_now],
+                                    ["45 minutes", 45.minutes.from_now],
+                                    ["1 Hour", 60.minutes.from_now],
+                                    ["1 Hour 15 Minutes", 75.minutes.from_now],
+                                    ["1 Hour 30 Minutes", 90.minutes.from_now],
+                                    ["1 Hour 45 Minutes", 105.minutes.from_now],
+                                    ["2 Hours", 120.minutes.from_now]] %>                                
+        <%= form.submit "Rent Now!", class:"submit" %>
     <% end %>
 </div>

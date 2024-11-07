@@ -22,6 +22,8 @@ class RentalsController < ApplicationController
   # POST /rentals or /rentals.json
   def create
     @rental = Rental.new(rental_params)
+    @rental.start_time = Time.now
+    @rental.over_time = false
 
     respond_to do |format|
       if @rental.save
