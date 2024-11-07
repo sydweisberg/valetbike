@@ -12,7 +12,6 @@ task initial_import: [:environment] do
   end
   CSV.foreach(("./notes/user-data.csv"), headers: true, col_sep: ",") do |row|
     u = User.new(identifier: row[0], username: row[1],first: row[2],last: row[3], email: row[4], password: row[5])
-    puts(u)
     u.save!
   end
 end
