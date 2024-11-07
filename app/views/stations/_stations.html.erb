@@ -2,14 +2,31 @@
   <table class="min-w-full bg-white">
     <thead class="bg-gray-800 text-white">
       <tr>
+        <%
+=begin%>
+ <th><%= link_to "Station Name", :sort => "name"%> </th>
+<%
+=end%>
+        <%
+=begin%>
+ <th><%= link_to "Address", :sort => "address"%> </th>
+<%
+=end%>
+        <%
+=begin%>
+ <th><%= link_to "Available Bikes", :sort => "docked_bikes"%> </th>
+<%
+=end%>
         <th id="station-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Station Name</span>
+           <span><%= link_to "Station Name", :sort => "name"%> </span>
         </th>
+
         <th id="address" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Address</span>
+          <span><%= link_to "Address", :sort => "address"%> </span>
         </th>
+
         <th id="available-bikes" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
-          <span>Available Bikes</span>
+            <span><%= "Available Bikes"%></span>
         </th>
       </tr>
     </thead>
@@ -19,7 +36,7 @@
         <tr>
           <td class="text-left py-3 px-6"><%= station.name %></td>
           <td class="text-left py-3 px-6"><%= station.address %></td>
-          <td class="text-left py-3 px-6"><%= station.docked_bikes.count %></td>
+          <td class="text-left py-3 px-6"><%= count_available_bikes(station) %></td>
         </tr>
       <% end %>
     </tbody>
