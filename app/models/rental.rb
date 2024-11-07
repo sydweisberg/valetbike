@@ -5,6 +5,6 @@ class Rental < ApplicationRecord
   attribute :end_time, :datetime
   attribute :over_time, :boolean
 
-  belongs_to :User
-  has_one :Bike
+  belongs_to :user
+  has_one :bike
 end

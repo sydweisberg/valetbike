@@ -1,32 +1,44 @@
 <div class="container">
-    <h1>
-        <strong>Avaliable Bikes</strong>
-    </h1>
-    <%= form_with model: @rental do |form| %>
+    <h1><strong>Available Bikes:</strong></h1>
+    <%# did not use model: @rental because arguments were not being wrapped in rental key, use name: rental[attribute] syntax instead %>
+    <%= form_with(url: rentals_path, local: true) do |form| %>
+        <%# if there are bikes at the station, display and allow user to select one%>
         <% if @station.docked_bikes.present? %>
             <% @station.docked_bikes.each do |bike| %>
-            <label class="radio-button-container">
-            <%= form.radio_button :bike_id, bike.id, class: "custom-radio" %>
-            <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged", value: bike.id %>
-            <span class="radio"></span>
-            </label>
+                <label class="radio-button-container">
+                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio" %>
+                    <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged", value: bike.id %>
+                    <span class="radio"></span>
+                </label>
+            <% end %>
+
+            <%# Allow user to select duration of ride %>
+            <h1><strong>Select Ride Duration:</strong></h1>
+            <%= form.select :end_time, [
+                ["15 minutes", 15.minutes.from_now],
+                ["30 minutes", 30.minutes.from_now],
+                ["45 minutes", 45.minutes.from_now],
+                ["1 Hour", 60.minutes.from_now],
+                ["1 Hour 15 Minutes", 75.minutes.from_now],
+                ["1 Hour 30 Minutes", 90.minutes.from_now],
+                ["1 Hour 45 Minutes", 105.minutes.from_now],
+                ["2 Hours", 120.minutes.from_now]], {}, name: "rental[end_time]"
+            %>
+            
+            <%# hidden fields %>
+            <%# placeholder, we will generate identifiers later %>
+            <%= form.text_field :identifier, placeholder: "Enter Identifier", class: "field", name: "rental[identifier]" %>
+            <%# get current time %>
+            <%= form.hidden_field :start_time, value: Time.now, name: "rental[start_time]" %>
+            <%# init overtime to false %>
+            <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
+            <%# hardcode user id- we will change this to current user once we have sessions %>
+            <%= form.hidden_field :user_id, value: 1, name: "rental[user_id]" %>
+            <%# submit form %>
+            <%= form.submit "Rent Now!", class: "submit" %>
+        <% else %>
+            <%# if there are no bikes availble, display the message %>
+            <div class="empty">No bikes currently available at station.</div>
         <% end %>
-            <% else %>
-            <div class="empty">
-            No bikes currently avaliable at station.
-            </div>
-        <% end %>
-        <h1>
-            <strong>Select Ride Duration</strong>
-        </h1>
-        <%= form.select :end_time, [["15 minutes", 15.minutes.from_now],
-                                    ["30 minutes", 30.minutes.from_now],
-                                    ["45 minutes", 45.minutes.from_now],
-                                    ["1 Hour", 60.minutes.from_now],
-                                    ["1 Hour 15 Minutes", 75.minutes.from_now],
-                                    ["1 Hour 30 Minutes", 90.minutes.from_now],
-                                    ["1 Hour 45 Minutes", 105.minutes.from_now],
-                                    ["2 Hours", 120.minutes.from_now]] %>                                
-        <%= form.submit "Rent Now!", class:"submit" %>
-    <% end %>
+    <% end %>   
 </div>
