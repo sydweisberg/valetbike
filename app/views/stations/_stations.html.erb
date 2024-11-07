@@ -1,0 +1,27 @@
+<div class="shadow overflow-hidden rounded border-b border-gray-200">
+  <table class="min-w-full bg-white">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th id="station-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+          <span>Station Name</span>
+        </th>
+        <th id="address" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+          <span>Address</span>
+        </th>
+        <th id="available-bikes" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+          <span>Available Bikes</span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-700">
+      <% stations.each do |station| %>
+        <tr>
+          <td class="text-left py-3 px-6"><%= station.name %></td>
+          <td class="text-left py-3 px-6"><%= station.address %></td>
+          <td class="text-left py-3 px-6"><%= count(station.docked_bikes) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
