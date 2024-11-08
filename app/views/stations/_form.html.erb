@@ -15,13 +15,13 @@
             <%# Allow user to select duration of ride %>
             <h1><strong>Select Ride Duration:</strong></h1>
             <%= form.select :end_time, [
-                ["15 minutes", 15.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
-                ["30 minutes", 30.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
-                ["45 minutes", 45.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
-                ["1 Hour", 60.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
+                ["15 minutes", 15.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
+                ["30 minutes", 30.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
+                ["45 minutes", 45.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
+                ["1 Hour", 60.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
                 ["1 Hour 15 Minutes", 75.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["1 Hour 30 Minutes", 90.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
-                ["1 Hour 45 Minutes", 105.minutes.from_now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M")],
+                ["1 Hour 30 Minutes", 90.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
+                ["1 Hour 45 Minutes", 105.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
                 ["2 Hours", 120.minutes.from_now]], {}, name: "rental[end_time]"
             %>
             
@@ -29,7 +29,7 @@
             <%# placeholder, we will generate identifiers later %>
             <%= form.text_field :identifier, placeholder: "Enter Identifier", class: "field", name: "rental[identifier]" %>
             <%# get current time %>
-            <%= form.hidden_field :start_time, value: Time.now.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %H:%M"), name: "rental[start_time]" %>
+            <%= form.hidden_field :start_time, value: Time.now.in_time_zone("Eastern Time (US & Canada)"), name: "rental[start_time]" %>
             <%# init overtime to false %>
             <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
             <%# hardcode user id- we will change this to current user once we have sessions %>

@@ -5,30 +5,34 @@
         <div class="section-title">
             Success!
         </div>
-        <h1>Enjoy your ride!</h1>
+        <div class="section-title">
+            Enjoy your ride!
+        </div>
         <h1>Your ride ends in...</h1>
-        <div id="countdown"></div>
-        <%# maybe a return bike button moment?? %>
+        <div id="countdown">
+        </div>
     </div>
   </div>
 </div>
 
 <script>
-// get end_time from rental
-var count_down_time = new Date("<%= @rental.end_time %>").getTime();
-// update count down every 1 second
-var x = setInterval(function() {
-  // get current time
-  var current_time = new Date().getTime();
-  // find difference between current time and end_time
-  var time_remaining = count_down_time - current_time;
+// Set the date we're counting down to
+var countdown_time = new Date("<%= @rental.end_time %>").getTime();
 
-  // convert time_remaining to hours, minutes
-  var hours = Math.floor((time_remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((time_remaining % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((time_remaining % (1000 * 60)) / 1000);
-  
-  // convert 1 digit numbers to the 00 version
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var current_time = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var time_left = countdown_time - current_time;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var hours = Math.floor((time_left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((time_left % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((time_left % (1000 * 60)) / 1000);
+
   if (hours < 10) {
     hours = "0" + hours.toString()
   }
@@ -47,15 +51,15 @@ var x = setInterval(function() {
   else {
     seconds = seconds.toString()
   }
-    
-  // show result in countdown div
+  
+  // Output the result in an element with id="demo"
   document.getElementById("countdown").innerHTML = hours + ":"
   + minutes + ":" + seconds;
     
-  // if the countdown is over
-  if (distance < 0) {
+  // If the count down is over, write some text 
+  if (time_left < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "Your ride is over.";
+    document.getElementById("countdown").innerHTML = "EXPIRED";
   }
 }, 1000);
 </script>
