@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   get '/users/:id', to: 'users#show', as: 'user'
   get '/signin', to: 'signin#index'
+  resources :rentals
 end
