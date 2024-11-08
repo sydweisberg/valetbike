@@ -5,6 +5,11 @@
       <%= @station.name %> (<%= @station.address %>)
     </div>
   </div>
+  <% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
   <%= render(partial: "form") %>
   <div class="button return-container">
       <%= link_to 'Return to Map', :back %>

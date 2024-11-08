@@ -1,38 +1,38 @@
 <div class="container">
     <h1><strong>Available Bikes:</strong></h1>
-    <%# did not use model: @rental because arguments were not being wrapped in rental key, use name: rental[attribute] syntax instead %>
+    <%# did not use model: @rental because arguments were not being wrapped in rental key, using name: rental[attribute] syntax instead %>
     <%= form_with(url: rentals_path, local: true) do |form| %>
         <%# if there are bikes at the station, display and allow user to select one%>
         <% if @station.docked_bikes.present? %>
             <% @station.docked_bikes.each do |bike| %>
+                <%# radio_button is the button style %>
                 <label class="radio-button-container">
-                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio" %>
+                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
+                    <%# 0 % charged is hard coded right now %>
                     <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged", value: bike.id %>
                     <span class="radio"></span>
                 </label>
             <% end %>
 
-            <%# Allow user to select duration of ride %>
+            <%# allow user to select duration of ride %>
             <h1><strong>Select Ride Duration:</strong></h1>
-            <%= form.select :end_time, [
-                ["15 minutes", 15.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["30 minutes", 30.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["45 minutes", 45.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["1 Hour", 60.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["1 Hour 15 Minutes", 75.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["1 Hour 30 Minutes", 90.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["1 Hour 45 Minutes", 105.minutes.from_now.in_time_zone("Eastern Time (US & Canada)")],
-                ["2 Hours", 120.minutes.from_now]], {}, name: "rental[end_time]"
+            <%= form.select :duration, [
+                ["15 minutes", 15],
+                ["30 minutes", 30],
+                ["45 minutes", 45],
+                ["1 Hour", 60],
+                ["1 Hour 15 Minutes", 75],
+                ["1 Hour 30 Minutes", 90],
+                ["1 Hour 45 Minutes", 105],
+                ["2 Hours", 120]], {}, name: "rental[duration]"
             %>
             
             <%# hidden fields %>
             <%# placeholder, we will generate identifiers later %>
             <%= form.text_field :identifier, placeholder: "Enter Identifier", class: "field", name: "rental[identifier]" %>
-            <%# get current time %>
-            <%= form.hidden_field :start_time, value: Time.now.in_time_zone("Eastern Time (US & Canada)"), name: "rental[start_time]" %>
             <%# init overtime to false %>
             <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
-            <%# hardcode user id- we will change this to current user once we have sessions %>
+            <%# hardcode user id- we will change this to current user once we have sessions set up %>
             <%= form.hidden_field :user_id, value: 1, name: "rental[user_id]" %>
             <%# submit form %>
             <%= form.submit "Rent Now!", class: "submit" %>

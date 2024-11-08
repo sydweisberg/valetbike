@@ -23,19 +23,20 @@ class RentalsController < ApplicationController
   # POST /rentals or /rentals.json
   def create
     @rental = Rental.new(rental_params)
-
     respond_to do |format|
       if @rental.save
-        # if the rental saves, go to rentals#index
-        # we can totally change this im just doing it for now
-        # oh i have an idea how about on that page we start a countdown for you to see how long is left on your rental
-        # and we can add a button you can press to return your bike 
+        # if the rental is valid...
+        # make the start time of the rental the time the rental was created
+        # use rental duration to calculate correct end time
+        @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes)
+        # redirct user to the page for their rental
         format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
-        #format.html { redirect_to rental_url(@rental), notice: "Rental was successfully created." }
-        #format.json { render :show, status: :created, location: @rental }
       else
-        # else, render error page
-        format.html { render :error, status: :unprocessable_entity }
+        # else, display flash alert and refresh the page for the current station
+        format.html do
+          flash.alert = "Invalid rental."
+          redirect_to stations_path(@station), status: :unprocessable_entity
+        end
         format.json { render json: @rental.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +73,6 @@ class RentalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rental_params
-      params.require(:rental).permit(:bike_id, :end_time, :identifier, :start_time, :over_time, :user_id)
+      params.require(:rental).permit(:bike_id, :end_time, :identifier, :start_time, :over_time, :user_id, :duration)
     end
 end
