@@ -1,4 +1,3 @@
-<div class="container">
     <h1><strong>Available Bikes:</strong></h1>
     <%# did not use model: @rental because arguments were not being wrapped in rental key, using name: rental[attribute] syntax instead %>
     <%= form_with(url: rentals_path, local: true) do |form| %>
@@ -13,7 +12,7 @@
                     <span class="radio"></span>
                 </label>
             <% end %>
-
+    <div class="form-container">
             <%# allow user to select duration of ride %>
             <h1><strong>Select Ride Duration:</strong></h1>
             <%= form.select :duration, [
@@ -24,21 +23,28 @@
                 ["1 Hour 15 Minutes", 75],
                 ["1 Hour 30 Minutes", 90],
                 ["1 Hour 45 Minutes", 105],
-                ["2 Hours", 120]], {}, name: "rental[duration]"
+                ["2 Hours", 120]], {}, name: "rental[duration]", 
+                id: "dropdown"
             %>
             
             <%# hidden fields %>
             <%# placeholder, we will generate identifiers later %>
-            <%= form.text_field :identifier, placeholder: "Enter Identifier", class: "field", name: "rental[identifier]" %>
+            <%= form.text_field :identifier, placeholder: "Enter Identifier", name: "rental[identifier]", id:"dropdown" %>
             <%# init overtime to false %>
             <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
             <%# hardcode user id- we will change this to current user once we have sessions set up %>
             <%= form.hidden_field :user_id, value: 1, name: "rental[user_id]" %>
             <%# submit form %>
-            <%= form.submit "Rent Now!", class: "submit" %>
+            <div class="button-container">
+                <%= form.submit "Rent Now!", class: "submit button" %>
+                <div class="return button">
+                    <%= link_to 'Return to Map', stations_path() %>
+                </div>
+            </div>
         <% else %>
             <%# if there are no bikes availble, display the message %>
             <div class="empty">No bikes currently available at station.</div>
         <% end %>
+
     <% end %>   
-</div>
+    </div>
