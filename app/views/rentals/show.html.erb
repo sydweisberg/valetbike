@@ -16,23 +16,24 @@
 </div>
 
 <script>
-// Set the date we're counting down to
+// set the time we are counting down to
 var countdown_time = new Date("<%= @rental.end_time %>").getTime();
 
-// Update the count down every 1 second
+// update count every second
 var x = setInterval(function() {
 
-  // Get today's date and time
+  // get current date/time
   var current_time = new Date().getTime();
     
-  // Find the distance between now and the count down date
+  // find time left between now and count down time
   var time_left = countdown_time - current_time;
     
-  // Time calculations for days, hours, minutes and seconds
+  // find hours, minutes and seconds left
   var hours = Math.floor((time_left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((time_left % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((time_left % (1000 * 60)) / 1000);
 
+  // convert 1 digit to 00 format strings
   if (hours < 10) {
     hours = "0" + hours.toString()
   }
@@ -52,14 +53,14 @@ var x = setInterval(function() {
     seconds = seconds.toString()
   }
   
-  // Output the result in an element with id="demo"
+  // show result in countdown div, formatted correctly
   document.getElementById("countdown").innerHTML = hours + ":"
   + minutes + ":" + seconds;
     
-  // If the count down is over, write some text 
+  // if the ride is over, say it is over
   if (time_left < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
+    document.getElementById("countdown").innerHTML = "Your ride is over.";
   }
 }, 1000);
 </script>
