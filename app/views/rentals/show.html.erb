@@ -1,16 +1,19 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
-    <div class="container">
-        <div class="section-title">
+        <br><br>
+        <div style="text-align: center; font-size: 60px;" class="section-title">
             Success!
         </div>
-        <div class="section-title">
+        <div style="text-align: center;" class="section-title">
             Enjoy your ride!
         </div>
-        <h1>Your ride ends in...</h1>
-        <div id="countdown">
+        <h1 style="text-align: center;">Your ride ends in...</h1>
+        <div style="font-size: 2rem; font-weight: bold; color: #1F487E; text-align: center;" id="countdown">
+          &nbsp;
         </div>
+        <br><br>
+        <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
     </div>
   </div>
 </div>
