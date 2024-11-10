@@ -1,0 +1,66 @@
+<%= render(partial: 'layouts/header') %>
+<div class="page-section flexbox vertical stretch">
+<div class="section-inner flexbox vertical stretch">
+    <div class="container">
+        <div class="section-title">
+            Success!
+        </div>
+        <div class="section-title">
+            Enjoy your ride!
+        </div>
+        <h1>Your ride ends in...</h1>
+        <div id="countdown">
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// set the time we are counting down to
+var countdown_time = new Date("<%= @rental.end_time %>").getTime();
+
+// update count every second
+var x = setInterval(function() {
+
+  // get current date/time
+  var current_time = new Date().getTime();
+    
+  // find time left between now and count down time
+  var time_left = countdown_time - current_time;
+    
+  // find hours, minutes and seconds left
+  var hours = Math.floor((time_left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((time_left % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((time_left % (1000 * 60)) / 1000);
+
+  // convert 1 digit to 00 format strings
+  if (hours < 10) {
+    hours = "0" + hours.toString()
+  }
+  else {
+    hours = hours.toString()
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes.toString()
+  }
+  else {
+    minutes = minutes.toString()
+  }
+  if (seconds < 10) {
+    seconds = "0" + seconds.toString()
+  }
+  else {
+    seconds = seconds.toString()
+  }
+  
+  // show result in countdown div, formatted correctly
+  document.getElementById("countdown").innerHTML = hours + ":"
+  + minutes + ":" + seconds;
+    
+  // if the ride is over, say it is over
+  if (time_left < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "Your ride is over.";
+  }
+}, 1000);
+</script>

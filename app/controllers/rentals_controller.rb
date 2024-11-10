@@ -8,6 +8,7 @@ class RentalsController < ApplicationController
 
   # GET /rentals/1 or /rentals/1.json
   def show
+    @rental = Rental.find(params[:id])
   end
 
   # GET /rentals/new
@@ -22,13 +23,20 @@ class RentalsController < ApplicationController
   # POST /rentals or /rentals.json
   def create
     @rental = Rental.new(rental_params)
-
     respond_to do |format|
       if @rental.save
-        format.html { redirect_to rental_url(@rental), notice: "Rental was successfully created." }
-        format.json { render :show, status: :created, location: @rental }
+        # if the rental is valid...
+        # make the start time of the rental the time the rental was created
+        # use rental duration to calculate correct end time
+        @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes)
+        # redirct user to the page for their rental
+        format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
       else
-        format.html { render :new, status: :unprocessable_entity }
+        # else, display flash alert and refresh the page for the current station
+        format.html do
+          flash.alert = "Invalid rental."
+          redirect_to stations_path(@station), status: :unprocessable_entity
+        end
         format.json { render json: @rental.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +73,6 @@ class RentalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rental_params
-      params.require(:rental).permit(:identifier, :user_id, :bike_id, :start_time, :end_time, :over_time)
+      params.require(:rental).permit(:bike_id, :end_time, :identifier, :start_time, :over_time, :user_id, :duration)
     end
 end
