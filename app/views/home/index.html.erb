@@ -5,7 +5,11 @@
     <div class="row">
         <div class="column">
             <div class="section-title">
-                Welcome to Valet Bike, Riders!
+                <% if user_signed_in? %>
+                    Welcome to Valet Bike, <%= current_user.first %>!
+                <% else %>
+                    Welcome to Valet Bike, Riders!
+                <% end %>
             </div>
             <div class="button">
                 <%= link_to('Rent a Bike!', stations_path) %>
