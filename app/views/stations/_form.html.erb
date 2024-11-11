@@ -32,8 +32,14 @@
             <%= form.text_field :identifier, placeholder: "Enter Identifier", name: "rental[identifier]", id:"dropdown" %>
             <%# init overtime to false %>
             <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
-            <%# hardcode user id- we will change this to current user once we have sessions set up %>
-            <%= form.hidden_field :user_id, value: 1, name: "rental[user_id]" %>
+            <%# hardcode user id %>
+
+            <% if current_user.nil? %>
+                <%= form.hidden_field :user_id, value: 0, name: "rental[user_id]" %>
+            <% else %>
+                <%= form.hidden_field :user_id, value: current_user.id, name: "rental[user_id]" %>
+            <% end %>
+
             <%# submit form %>
             <div class="button-container">
                 <%= form.submit "Rent Now!", class: "submit button" %>
