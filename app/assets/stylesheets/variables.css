@@ -1,13 +1,15 @@
 :root {
-  --title-font:             'Rubik', 'Arial';
-  --body-font:              'Rubik', 'Arial';
+  --title-font: "Rubik", "Arial";
+  --body-font: "Rubik", "Arial";
 
-  --black-color:            #160919;
-  --light-black-color:      #2E2230;
-  --gray-color:             #84848C;
-  --light-gray-color:       #D0CED1;
-  --dark-white-color:       #F3F2F3;
-  --medium-white-color:     #FDFCFD;
-  --white-color:            #FFFFFF;
-
+  --black-color: #160919;
+  --light-black-color: #2e2230;
+  --gray-color: #84848c;
+  --light-gray-color: #d0ced1;
+  --dark-white-color: #f3f2f3;
+  --medium-white-color: #fdfcfd;
+  --white-color: #ffffff;
+  --delft-blue-color: #1d3461;
+  --sky-blue-color: #5ec4e0;
+  --polynesian-blue-color: #1f487e;
 }
