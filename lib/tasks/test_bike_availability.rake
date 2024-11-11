@@ -1,6 +1,6 @@
 desc "Set bike status for testing purposes only"
 task test_bike_avail: [:environment] do
-  Bike.where(:id.even?).each do |b|
+  Bike.where(:identifier.even?).each do |b|
     b.update(status: "available")
     b.save!
   end
