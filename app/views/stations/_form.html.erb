@@ -3,19 +3,19 @@
         <strong>Avaliable Bikes</strong>
     </h1>
     <%= form_with model: @rental do |form| %>
-        <% if @station.docked_bikes.present? %>
-            <% @station.docked_bikes.each do |bike| %>
-            <label class="radio-button-container">
-            <%= form.radio_button :bike_id, bike.id, class: "custom-radio" %>
-            <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged", value: bike.id %>
-            <span class="radio"></span>
-            </label>
-        <% end %>
-            <% else %>
-            <div class="empty">
-            No bikes currently avaliable at station.
-            </div>
-        <% end %>
-        <%#= form.submit "Sign Up" %>
+    <% if @station.docked_bikes.present? %>
+    <% @station.docked_bikes.each do |bike| %>
+    <label class="radio-button-container">
+        <%= form.radio_button :bike_id, bike.id, class: "custom-radio" %>
+        <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged, #{bike.status.capitalize}", value: bike.id %>
+        <span class="radio"></span>
+    </label>
+    <% end %>
+    <% else %>
+    <div class="empty">
+        No bikes currently avaliable at station.
+    </div>
+    <% end %>
+    <%#= form.submit "Sign Up" %>
     <% end %>
 </div>
