@@ -1,7 +1,11 @@
 <ul>
   <li><%= link_to(image_tag('bike_icon.png', alt: 'Bike icon'), root_path) %></li>
-  <li><%= link_to('Sign Up', signup_path) %></li>
-  <li><%= link_to('Sign In', signin_path) %></li>
+  <% if user_signed_in? %>
+      <li><%= button_to 'Log Out', logout_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to('Sign Up', signup_path) %></li>
+    <li><%= link_to('Sign In', login_path) %></li>
+  <% end %>
   <li><%= link_to('Rent', stations_path) %></li>
   <li><%= link_to('About', about_path) %></li>
   <li class="active"><%= link_to('Home', root_path) %></li>
