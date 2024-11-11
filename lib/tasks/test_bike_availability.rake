@@ -4,11 +4,11 @@ task test_bike_avail: [:environment] do
     b.update(status: "available")
     b.save!
   end
-  Bike.where(:id.odd).each do |b|
+  Bike.select{ |bike| bike.identifier.odd?}.each do |b|
     b.update(status: "service")
     b.save!
   end
-  Bike.where(:id>9000).each do |b|
+  Bike.select{ |bike| bike.identifier>9000}.each do |b|
     b.update(status: "charging")
     b.save!
   end
