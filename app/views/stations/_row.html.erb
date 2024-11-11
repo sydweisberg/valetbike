@@ -1,14 +1,7 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
     <div class="flexbox">
         <%= link_to station_path(station.id) do %>
-        <td class="text-left py-3 px-6"><%= station.name %></td>
-        <td class="text-left py-3 px-6"><%= station.address %></td>
-        <td class="text-left py-3 px-6"><%= count_rentable_bikes(station) %>
-            <%
-=begin%>
-            <%= station.identifier %>: <%= station.name %> (<%= station.address %>)
-            <%
-=end%>
-            <% end %>
+        <%= station.identifier %>: <%= station.name %> (<%= station.address %>)
+        <% end %>
     </div>
 </div>
