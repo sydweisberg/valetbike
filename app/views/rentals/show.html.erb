@@ -1,18 +1,33 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
-    <div class="container">
-        <div class="section-title">
+        <br><br>
+        <div style="text-align: center; font-size: 60px;" class="section-title">
             Success!
         </div>
-        <div class="section-title">
+        <div style="text-align: center;" class="section-title">
             Enjoy your ride!
         </div>
-        <h1>Your ride ends in...</h1>
-        <div id="countdown">
+        <h1 style="text-align: center;">Your ride ends in...</h1>
+        <div style="font-size: 2rem; font-weight: bold; color: #1F487E; text-align: center;" id="countdown">
+          &nbsp;
         </div>
-    </div>
-  </div>
+        <br><br>
+        <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
+        <br><br>
+        <div class="button" onclick="popup()">
+            Return Your Bike
+        </div>
+        <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
+          <div style="text-align: left;">
+            <h1>Thank you for returning your bike!</h1>
+            <p>We hoped you enjoyed your ride.</p>
+          </div>
+            <div class="button" onclick="close_popup()">
+              Close
+            </div>
+</div>
+</div>
 </div>
 
 <script>
@@ -63,4 +78,14 @@ var x = setInterval(function() {
     document.getElementById("countdown").innerHTML = "Your ride is over.";
   }
 }, 1000);
+
+// Function to show the popup
+function popup() {
+  document.getElementById('popup').style.display = 'block';
+}
+
+// Function to close the popup
+function close_popup() {
+  document.getElementById('popup').style.display = 'none';
+}
 </script>
