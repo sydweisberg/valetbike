@@ -33,16 +33,16 @@
 
         <tbody class="text-gray-700">
             <% stations.each do |station| %>
-            <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-            <%
-=begin%>
             <tr>
+                <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+                <%
+=begin%>
                 <td class="text-left py-3 px-6"><%= station.name %></td>
                 <td class="text-left py-3 px-6"><%= station.address %></td>
                 <td class="text-left py-3 px-6"><%= count_rentable_bikes(station) %></td>
-            </tr>
-            <%
+                <%
 =end%>
+            </tr>
             <% end %>
         </tbody>
     </table>
