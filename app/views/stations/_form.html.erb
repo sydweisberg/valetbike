@@ -44,12 +44,17 @@
             <div class="button-container">
                 <%= form.submit "Rent Now!", class: "submit button" %>
                 <div class="return button">
-                    <%= link_to 'Return to Map', stations_path() %>
+                    <%= link_to 'Return to Stations', stations_path() %>
                 </div>
             </div>
         <% else %>
             <%# if there are no bikes availble, display the message %>
             <div class="empty">No bikes currently available at station.</div>
+            <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
+                <div class="return button">
+                    <%= link_to 'Return to Stations', stations_path() %>
+                </div>
+            </div>
         <% end %>
 
     <% end %>   
