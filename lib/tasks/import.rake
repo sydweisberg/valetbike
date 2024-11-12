@@ -2,6 +2,7 @@ require 'csv'
 
 desc "Import station and bike data"
 task initial_import: [:environment] do
+  # Import initial data from CSV files
   CSV.foreach(("./notes/station-data.csv"), headers: true, col_sep: ",") do |row|
     s = Station.new(identifier: row[0], name: row[1], address: row[6])
     s.save!
@@ -14,4 +15,47 @@ task initial_import: [:environment] do
     u = User.new(identifier: row[0], username: row[1],first: row[2],last: row[3], email: row[4], password: row[5])
     u.save!
   end
+
+  # set charges pseudo-randomly (ensure 0 and 100 exist)
+  Bike.select{|b| b[:identifier]<10000}.each do |b|
+    b.charge=rand(0...100)
+    b.save!
+  end
+  Bike.select{|b| b[:identifier]<1000}.each do |b|
+    b.charge=0
+    b.save!
+  end
+  Bike.select{|b| b[:identifier]>9000}.each do |b|
+    b.charge=100
+    b.save!
+  end
+
+  # if bike mostly charged
+  Bike.select{ |bike| bike.charge>=80}.each do |b|
+    b.update(status: "available")
+    b.save!
+  end
+  # if bike not mostly charged
+  Bike.select{ |bike| bike.charge<80}.each do |b|
+    b.update(status: "charging")
+    b.save!
+  end
+  # arbitrary bikes to service
+  Bike.select{ |bike| bike.identifier%5==0}.each do |b|
+    b.update(status: "service")
+    b.save!
+  end
+  # if bike being rented
+  Bike.select{ |bike| bike.current_station_id.nil? }.each do |b|
+    b.update(status: "rented")
+    b.save!
+  end
+
+  # give each station a capacity at least equal to the number of current bikes + 1
+  Station.select{ |station| station.capacity.nil? }.each do |s|
+    current = s.docked_bikes.select{ |bike| bike }.count
+    s.update(capacity: current + rand(1...5))
+    s.save!
+  end
+
 end
