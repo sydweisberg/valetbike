@@ -11,7 +11,11 @@
         <%= render(partial: 'layouts/map') %>
       <% else %>
         <% if @stations.present? %>
-          <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+          <div class="max-w-7xl mx-auto mt-12">
+          <center>
+            <%= render "stations", stations: @stations %>
+            </center>
+          </div>
         <% else %>
         <div class="empty">
           No stations found.

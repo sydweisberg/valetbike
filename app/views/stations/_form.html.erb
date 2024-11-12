@@ -8,7 +8,7 @@
                 <label class="radio-button-container">
                     <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
                     <%# 0 % charged is hard coded right now %>
-                    <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged", value: bike.id %>
+                    <%= form.label :bike_id, "Bike ##{bike.id}, 0% Charged, #{bike.status.capitalize}", value: bike.id %>
                     <span class="radio"></span>
                 </label>
             <% end %>

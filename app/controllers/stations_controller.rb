@@ -1,8 +1,8 @@
 class StationsController < ApplicationController
 
   def index
-    @stations = Station.all.order(identifier: :asc)
-    @view = params[:view] || 'map'
+    @stations = Station.all.order(params[:sort])
+    @view = params[:view] || 'list'
   end
 
   def show
