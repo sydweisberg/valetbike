@@ -10,18 +10,18 @@
   --gray-color: #84848c;
   --medium-gray-color: #c4c4c4;
   --light-gray-color: #d0ced1;
-  --ccc-color: #ccc; /* SWW: I propose merging this with --light-gray-color */
+  --ccc-color: #cccccc; /* SWW: I propose merging this with --light-gray-color */
   --dark-white-color: #f3f2f3;
   --medium-white-color: #fdfcfd;
-  --light-white-color: #eee; /* SWW: I propose merging this with --medium-white-color */
+  --light-white-color: #eeeeee; /* SWW: I propose merging this with --medium-white-color */
   --white-color: #ffffff;
 
-
+  /* Blues */
   --delft-blue-color: #1d3461;
-  --sky-blue-color: #5ec4e0;
   --polynesian-blue-color: #1f487e;
   --dark-teal-color: #418ca0;
   --azure-color: #2196f3;
+  --sky-blue-color: #5ec4e0;
 
   /* Opaque colors */
   --drop-shadow-opaque: rgba(0, 0, 0, 0.15);
