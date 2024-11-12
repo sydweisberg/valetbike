@@ -1,5 +1,5 @@
 .column, .centered_column{
-    color: black;
+    color: var(--black-color);
     display: flex;
     flex-direction: column;
     justify-content: space_evenly;
@@ -8,7 +8,7 @@
     width: 50%;
     padding: 10px;
   }
-  
+
   .title {
     font-size: xx-large;
   }

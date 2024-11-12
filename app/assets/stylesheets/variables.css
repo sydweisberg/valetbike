@@ -2,14 +2,36 @@
   --title-font: "Rubik", "Arial";
   --body-font: "Rubik", "Arial";
 
+  /* Monochrome */
   --black-color: #160919;
   --light-black-color: #2e2230;
+  --dark-gray-color: #606060;
+  --slate-gray-color: #787878; /* SWW: I propose merging this with --gray-color */
   --gray-color: #84848c;
+  --medium-gray-color: #c4c4c4;
+  --ccc-color: #cccccc; /* SWW: I propose merging this with --light-gray-color */
   --light-gray-color: #d0ced1;
   --dark-white-color: #f3f2f3;
   --medium-white-color: #fdfcfd;
+  --light-white-color: #eeeeee; /* SWW: I propose merging this with --medium-white-color */
   --white-color: #ffffff;
+
+  /* Blues */
   --delft-blue-color: #1d3461;
-  --sky-blue-color: #5ec4e0;
   --polynesian-blue-color: #1f487e;
+  --dark-teal-color: #418ca0;
+  --azure-color: #2196f3;
+  --sky-blue-color: #5ec4e0;
+
+  /* Opaque colors */
+  --drop-shadow-opaque: rgba(0, 0, 0, 0.15);
+
+  /* Colors to consider instead of white: */
+  --old-lace-color: #FDF5E6;
+  --cosmic-latte-color: #FFF8E7;
+  --floral-white-color: #FFFAF0;
+
+
+  /* Colors outside theme */
+   --bg-blue-200: #bfdbfe; /* from application.tailwind.css */
 }

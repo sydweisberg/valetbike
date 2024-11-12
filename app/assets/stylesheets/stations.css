@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--ccc-color);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -30,17 +30,17 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--white-color);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--azure-color);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--azure-color);
 }
 
 input:checked + .slider:before {
@@ -72,7 +72,7 @@ input:checked + .slider:before {
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: var(--light-white-color);
   border-radius: 50%;
 }
 
@@ -97,12 +97,12 @@ input:checked + .slider:before {
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px var(--drop-shadow-opaque);
 }
 
 .styled-table thead tr {
   background-color: var(--polynesian-blue-color);
-  color: #ffffff;
+  color: var(--white-color);
   text-align: left;
 }
 .styled-table th,
