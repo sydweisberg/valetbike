@@ -1,7 +1,7 @@
 .button, .toggle_button {
-    background-color: #5ec4e0;
-    border: rgb(9, 4, 4);
-    color: white;
+    background-color: var(--sky-blue-color);
+    border: var(--black-color);
+    color: var(--white-color);
     padding: 10px 20px;
     width: 25%;
     text-align: center;
@@ -11,16 +11,16 @@
   }
 
   .button.active, .toggle_button.active {
-    background-color: #5ec4e0; /* Change color for active state */
+    background-color: var(--sky-blue-color); /* Change color for active state */
   }
 
   .toggle_button.active {
-    color: rgb(255, 255, 255);
+    color: var(--white-color);
   }
 
   .toggle_button {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    background-color: var(--white-color);
+    color: var(--black-color);
     padding: 0px;
     font-size: 19px;
     display: block;
@@ -33,5 +33,5 @@
     align-self: center;
     width: 30%;
     height: 35px;
-    border: 2px solid #c4c4c4;
+    border: 2px solid var(--medium-gray-color);
   }

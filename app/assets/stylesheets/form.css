@@ -23,24 +23,24 @@
 }
 
 .submit {
-    background-color: #5ec4e0;
+    background-color: var(--sky-blue-color);
 }
 
 .submit:hover {
-    background-color: #418ca0;
+    background-color: var(--dark-teal-color)
 }
 
 .return {
-    background-color: #c4c4c4;
+    background-color: var(--medium-gray-color);
 }
 
 .return:hover {
-    background-color: #787878;
+    background-color: var(--slate-gray-color);
 }
 
 .subscript {
     font-size: small;
-    color: #606060;
+    color: var(--dark-gray-color);
     padding: 2px 7px;
 }
 

@@ -3,27 +3,27 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #c4c4c4;
+    background-color: var(--medium-gray-color);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
   }
-  
+
   li {
     float: right;
     display: block;
-    color: white;
+    color: var(--white-color);
     text-align: center;
     padding: 16px 16px;
     text-decoration: none;
-    border-right: 1px solid #c4c4c4;
+    border-right: 1px solid var(--medium-gray-color);
     font-size: 20px;
     height: 60px;
   }
-  
+
   li:hover {
-    background-color: #5ec4e0;
+    background-color: var(--sky-blue-color)
   }
 
   li:first-child {
@@ -32,5 +32,5 @@ ul {
   }
 
   li:first-child:hover {
-    background-color: #c4c4c4;
+    background-color: var(--medium-gray-color);
   }
