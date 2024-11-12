@@ -1,31 +1,29 @@
-<div class="styled-table">
-    <table>
-        <thead>
-            <tr>
-                <th id="station-name">
-                    <span><%= link_to "Station Name", :sort => "name"%> </span>
-                </th>
+<table class="styled-table" width=85%>
+    <thead>
+        <tr>
+            <th id="station-name">
+                <span><%= link_to "Station Name", :sort => "name"%> </span>
+            </th>
 
-                <th id="address">
-                    <span><%= link_to "Address", :sort => "address"%> </span>
-                </th>
+            <th id="address">
+                <span><%= link_to "Address", :sort => "address"%> </span>
+            </th>
 
-                <th id="available-bikes">
-                    <span><%= "Available Bikes"%></span>
-                </th>
-            </tr>
-        </thead>
+            <th id="available-bikes">
+                <span><%= "Available Bikes"%></span>
+            </th>
+        </tr>
+    </thead>
 
-        <tbody class="active-row">
-            <% stations.each do |station| %>
-            <tr>
-                <%= link_to station_path(station.id) do %>
-                <td><%= link_to station.name, station_path(station.id) %></td>
-                <td><%= link_to station.address, station_path(station.id) %></td>
-                <td><%= count_rentable_bikes(station) %></td>
-                <% end %>
-            </tr>
+    <tbody class="active-row">
+        <% stations.each do |station| %>
+        <tr>
+            <%= link_to station_path(station.id) do %>
+            <td><%= link_to station.name, station_path(station.id) %></td>
+            <td><%= link_to station.address, station_path(station.id) %></td>
+            <td><%= count_rentable_bikes(station) %></td>
             <% end %>
-        </tbody>
-    </table>
-</div>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
