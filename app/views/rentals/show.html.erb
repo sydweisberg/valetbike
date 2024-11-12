@@ -1,0 +1,91 @@
+<%= render(partial: 'layouts/header') %>
+<div class="page-section flexbox vertical stretch">
+<div class="section-inner flexbox vertical stretch">
+        <br><br>
+        <div style="text-align: center; font-size: 60px;" class="section-title">
+            Success!
+        </div>
+        <div style="text-align: center;" class="section-title">
+            Enjoy your ride!
+        </div>
+        <h1 style="text-align: center;">Your ride ends in...</h1>
+        <div style="font-size: 2rem; font-weight: bold; color: #1F487E; text-align: center;" id="countdown">
+          &nbsp;
+        </div>
+        <br><br>
+        <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
+        <br><br>
+        <div class="button" onclick="popup()">
+            Return Your Bike
+        </div>
+        <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
+          <div style="text-align: left;">
+            <h1>Thank you for returning your bike!</h1>
+            <p>We hoped you enjoyed your ride.</p>
+          </div>
+            <div class="button" onclick="close_popup()">
+              Close
+            </div>
+</div>
+</div>
+</div>
+
+<script>
+// set the time we are counting down to
+var countdown_time = new Date("<%= @rental.end_time %>").getTime();
+
+// update count every second
+var x = setInterval(function() {
+
+  // get current date/time
+  var current_time = new Date().getTime();
+    
+  // find time left between now and count down time
+  var time_left = countdown_time - current_time;
+    
+  // find hours, minutes and seconds left
+  var hours = Math.floor((time_left % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((time_left % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((time_left % (1000 * 60)) / 1000);
+
+  // convert 1 digit to 00 format strings
+  if (hours < 10) {
+    hours = "0" + hours.toString()
+  }
+  else {
+    hours = hours.toString()
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes.toString()
+  }
+  else {
+    minutes = minutes.toString()
+  }
+  if (seconds < 10) {
+    seconds = "0" + seconds.toString()
+  }
+  else {
+    seconds = seconds.toString()
+  }
+  
+  // show result in countdown div, formatted correctly
+  document.getElementById("countdown").innerHTML = hours + ":"
+  + minutes + ":" + seconds;
+    
+  // if the ride is over, say it is over
+  if (time_left < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "Your ride is over.";
+  }
+}, 1000);
+
+// Function to show the popup
+function popup() {
+  document.getElementById('popup').style.display = 'block';
+}
+
+// Function to close the popup
+function close_popup() {
+  document.getElementById('popup').style.display = 'none';
+}
+</script>
