@@ -9,8 +9,8 @@
   --slate-gray-color: #787878; /* SWW: I propose merging this with --gray-color */
   --gray-color: #84848c;
   --medium-gray-color: #c4c4c4;
-  --light-gray-color: #d0ced1;
   --ccc-color: #cccccc; /* SWW: I propose merging this with --light-gray-color */
+  --light-gray-color: #d0ced1;
   --dark-white-color: #f3f2f3;
   --medium-white-color: #fdfcfd;
   --light-white-color: #eeeeee; /* SWW: I propose merging this with --medium-white-color */
@@ -27,9 +27,10 @@
   --drop-shadow-opaque: rgba(0, 0, 0, 0.15);
 
   /* Colors to consider instead of white: */
-  --floral-white-color: #FFFAF0;
-  --cosmic-latte-color: #FFF8E7;
   --old-lace-color: #FDF5E6;
+  --cosmic-latte-color: #FFF8E7;
+  --floral-white-color: #FFFAF0;
+
 
   /* Colors outside theme */
    --bg-blue-200: #bfdbfe; /* from application.tailwind.css */
