@@ -10,6 +10,7 @@ class RentalsController < ApplicationController
   # GET /rentals/1 or /rentals/1.json
   def show
     @rental = Rental.find(params[:id])
+    @bike = Bike.find(@rental.bike_id)
   end
 
   # GET /rentals/new
@@ -43,15 +44,6 @@ class RentalsController < ApplicationController
         format.json { render json: @rental.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def return
-    puts "you're in return!"
-    @rental = Rental.find(params[:id])
-    bike = Bike.find_by(id: @rental.bike_id)
-    station = 1
-    bike.update(status: "available", current_station_id: station)
-    redirect_to stations_path
   end
 
   # PATCH/PUT /rentals/1 or /rentals/1.json
