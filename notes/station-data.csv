@@ -1,5 +1,5 @@
-identifier,name,has_kiosk,needs_maintenance,dock_count,docked_bike_count,address
-21,Florence Bank Station,0,0,7,4,19 Meadow Street Florence MA @ Lilly Library
+identifier,name,has_kiosk,needs_maintenance,dock_count,docked_bike_count,address,lat,long
+21,Florence Bank Station,0,0,7,4,19 Meadow Street Florence MA @ Lilly Library,72.2938572357,-29.2903750927
 24,Florence Center,0,0,10,2,31 Main Street Florence MA
 30,Jackson Street,0,0,16,8,7A-7D Jackson Street Northampton MA
 25,Cooley Dickinson Health Care,0,1,14,6,51 Locust Street Northampton MA

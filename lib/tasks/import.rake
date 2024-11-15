@@ -4,7 +4,7 @@ desc "Import station and bike data"
 task initial_import: [:environment] do
   # Import initial data from CSV files
   CSV.foreach(("./notes/station-data.csv"), headers: true, col_sep: ",") do |row|
-    s = Station.new(identifier: row[0], name: row[1], address: row[6])
+    s = Station.new(identifier: row[0], name: row[1], address: row[6],lat: row[7],long: row[8])
     s.save!
   end
   CSV.foreach(("./notes/bike-data.csv"), headers: true, col_sep: ",") do |row|
