@@ -2,8 +2,9 @@
     <%# did not use model: @rental because arguments were not being wrapped in rental key, using name: rental[attribute] syntax instead %>
     <%= form_with(url: rentals_path, local: true) do |form| %>
         <%# if there are bikes at the station, display and allow user to select one%>
-        <% if @station.docked_bikes.present? %>
+        <% if @station.docked_bikes.where(status: "available").present? %>
             <% @station.docked_bikes.each do |bike| %>
+                <% if bike.status == "available"%>
                 <%# radio_button is the button style %>
                 <label class="radio-button-container">
                     <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
@@ -11,6 +12,7 @@
                     <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged, #{bike.status.capitalize}", value: bike.id %>
                     <span class="radio"></span>
                 </label>
+                <% end %>
             <% end %>
     <div class="form-container">
             <%# allow user to select duration of ride %>
@@ -50,7 +52,7 @@
         <% else %>
             <%# if there are no bikes availble, display the message %>
             <div class="empty">No bikes currently available at station.</div>
-            <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
+            <div style="display: flex; justify-content: center; align-items: center;">
                 <div class="return button">
                     <%= link_to 'Return to Stations', stations_path() %>
                 </div>

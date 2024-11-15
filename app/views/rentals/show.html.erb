@@ -20,13 +20,14 @@
         </div>
         <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
           <div style="text-align: left;">
-            <h1>Thank you for returning your bike!</h1>
+            <h1>Would you like to return your bike?</h1>
             <p>We hoped you enjoyed your ride.</p>
-          </div>
-            <div class="button" onclick="close_popup()">
+          <div style="display: flex; justify-content: space-around; margin: 0% 30%">
+            <div class="button return" onclick="close_popup()">
               Close
             </div>
-</div>
+            <%= button_to 'Return', return_rental_path(@rental), method: :patch, class:"button submit" %>
+          </div>
 </div>
 </div>
 

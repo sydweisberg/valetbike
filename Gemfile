@@ -77,6 +77,10 @@ end
 # Developer Added Gems
 gem 'dotenv-rails'
 
+gem 'bootstrap'
+gem 'popper_js'
+gem 'sassc-rails'
+
 # Suggested Potentially Useful Gems
 # gem 'devise'
 # gem 'httparty'

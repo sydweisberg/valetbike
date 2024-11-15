@@ -14,4 +14,11 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+ # In config/routes.rb
+resources :rentals do
+  member do
+    patch 'return'  # PATCH request to handle the return action for a specific rental
+  end
+end
+
 end
