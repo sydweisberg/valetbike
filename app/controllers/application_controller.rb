@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_rental
-    if @rental.present? && @rental.user_id == current_user.id && @rental.end_time > Time.now
-      @current_rental = @rental
+    if @current_user = session[:current_rental_id] && Rental.find_by(id: session[:current_rental_id]).end_time > Time.now
+      @current_rental = Rental.find_by(id: session[:current_rental_id])
     else
       @current_rental = nil
     end
