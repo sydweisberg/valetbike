@@ -22,18 +22,21 @@
           <div style="text-align: left;">
             <h1>Would you like to return your bike?</h1>
             <p>We hoped you enjoyed your ride.</p>
+          <%# form to return the bike to a specific station %>
           <%= form_with url: return_bike_path(@bike), method: :patch, local: true do |form| %>
             <div>
+              <%# tet field for the user to enter return station id %>
               <%= form.text_field :station_id, placeholder: "Enter return station ID", class: "field" %>
             </div>
             <div style="display: flex; justify-content: space-around; margin: 0% 30%">
-            <div class="button return" onclick="close_popup()">
-              Close
+            <%# button to close popup (not return the bike) %>
+              <div class="button return" onclick="close_popup()">
+                Close
+              </div>
+              <%# button to submit the bike return %>
+              <%= form.submit 'Return', class: "button submit" %>
             </div>
-            <%= form.submit 'Return', class: "button submit" %>
-          </div>
         <% end %>
-
 </div>
 </div>
 
