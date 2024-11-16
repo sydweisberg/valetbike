@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
 
   def update
     # i think we will need an update function but this will not be the correct logic
-    @rental = Rental.find_by(id: params[:rental][:id])
-    if @rental.present? && @rental.user_id == current_user.id && @rental.end_time > Time.now
-      session[:current_rental_id] = @rental.id
-    else 
-      session[:current_rental_id] = nil
-    end
+    # @rental = Rental.find_by(id: params[:rental][:id])
+    # if @rental.present? && @rental.user_id == current_user.id && @rental.end_time > Time.now
+    #   session[:current_rental_id] = @rental.id
+    # else 
+    #   session[:current_rental_id] = nil
+    # end
   end
 
   def destroy
