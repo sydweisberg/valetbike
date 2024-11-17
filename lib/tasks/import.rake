@@ -36,12 +36,12 @@ task initial_import: [:environment] do
   end
 
   # if bike mostly charged
-  Bike.select{ |bike| bike.charge>=80}.each do |b|
+  Bike.select{ |bike| bike.charge>=50}.each do |b|
     b.update(status: "available")
     b.save!
   end
   # if bike not mostly charged
-  Bike.select{ |bike| bike.charge<80}.each do |b|
+  Bike.select{ |bike| bike.charge<50}.each do |b|
     b.update(status: "charging")
     b.save!
   end

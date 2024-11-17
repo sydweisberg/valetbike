@@ -10,6 +10,7 @@ class RentalsController < ApplicationController
   # GET /rentals/1 or /rentals/1.json
   def show
     @rental = Rental.find(params[:id])
+    @bike = Bike.find(@rental.bike_id)
   end
 
   # GET /rentals/new
@@ -30,6 +31,8 @@ class RentalsController < ApplicationController
         # make the start time of the rental the time the rental was created
         # use rental duration to calculate correct end time
         @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes)
+        bike = Bike.find_by(id: @rental.bike_id)
+        bike.update(status: "rented", current_station_id: nil)
         # redirct user to the page for their rental
         format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
       else
