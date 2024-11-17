@@ -23,13 +23,13 @@
                 ["1 Hour 15 Minutes", 75],
                 ["1 Hour 30 Minutes", 90],
                 ["1 Hour 45 Minutes", 105],
-                ["2 Hours", 120]], {}, name: "rental[duration]", 
+                ["2 Hours", 120]], {}, name: "rental[duration]",
                 id: "dropdown"
             %>
-            
+
             <%# hidden fields %>
             <%# placeholder, we will generate identifiers later %>
-            <%= form.text_field :identifier, placeholder: "Enter Identifier", name: "rental[identifier]", id:"dropdown" %>
+            <%= form.hidden_field :identifier, value: generate_rental_id(), name: "rental[identifier]"%>
             <%# init overtime to false %>
             <%= form.hidden_field :over_time, value: false, name: "rental[over_time]" %>
             <%# hardcode user id %>
@@ -57,5 +57,5 @@
             </div>
         <% end %>
 
-    <% end %>   
+    <% end %>
     </div>
