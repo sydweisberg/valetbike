@@ -33,6 +33,7 @@ class RentalsController < ApplicationController
         @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes)
         bike = Bike.find_by(id: @rental.bike_id)
         bike.update(status: "rented", current_station_id: nil)
+        session[:current_rental_id] = @rental.id
         # redirct user to the page for their rental
         format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
       else

@@ -12,7 +12,11 @@
                 <% end %>
             </div>
             <div class="button">
+                <% if active_rental? %>
+                <%= link_to('Rent a Bike!', rental_path(current_rental)) %>
+                <% else %>
                 <%= link_to('Rent a Bike!', stations_path) %>
+                <% end %>
             </div><br>
             <div>
                 <h1>About Valet Bike</h1>

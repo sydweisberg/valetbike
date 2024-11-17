@@ -24,6 +24,7 @@
             <p>We hoped you enjoyed your ride.</p>
           <%# form to return the bike to a specific station %>
           <%= form_with url: return_bike_path(@bike), method: :patch, local: true do |form| %>
+            <%= form.hidden_field :current_rental_id, value: @rental.id %>
             <div>
               <%# tet field for the user to enter return station id %>
               <%= form.text_field :station_id, placeholder: "Enter return station ID", class: "field" %>
@@ -85,7 +86,7 @@ var x = setInterval(function() {
   // if the ride is over, say it is over
   if (time_left < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "Your ride is over.";
+    document.getElementById("countdown").innerHTML = "Your rental is over time.";
   }
 }, 1000);
 
