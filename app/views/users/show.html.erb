@@ -1,14 +1,30 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      User Info
+    <div class="section-title-centered">
+      Hello, <%= @user.first %>!
     </div>
-    <div class="flexbox">
-        First Name: <%= @user.first %>
-    </div>
-    <div class="flexbox">
-        Last Name: <%= @user.last %>
-    </div>
-  </div>
+      <div ="container">
+      <div class="row">
+          <div class="column">
+          <h1>Congrats, you have biked 100 miles! </h1>
+          <div class="button">
+          <%= link_to('Edit Profile!', stations_path) %>
+      </div><br>
+      </div>
+      <div>
+
+        <h1>User Info</h1>
+      </div>
+      <div class="flexbox">
+          First Name: <%= @user.first %>
+      </div>
+      <div class="flexbox">
+          Last Name: <%= @user.last %>
+      </div>
+      <div class="flexbox">
+          Email: <%= @user.email %>
+      </div>
+</div>
+</div>
 </div>
