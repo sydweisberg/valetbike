@@ -7,5 +7,5 @@ class Rental < ApplicationRecord
   attribute :duration, :integer
 
   belongs_to :user
-  has_one :bike
+  belongs_to :bike
 end
