@@ -8,6 +8,11 @@
         <div style="text-align: center;" class="section-title">
             Enjoy your ride!
         </div>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+          <%= flash[:alert] %>
+          </div>
+        <% end %>
         <h1 style="text-align: center;">Your ride ends in...</h1>
         <div style="font-size: 2rem; font-weight: bold; color: #1F487E; text-align: center;" id="countdown">
           &nbsp;
