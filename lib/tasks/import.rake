@@ -4,7 +4,7 @@ desc "Import station and bike data"
 task initial_import: [:environment] do
   # Import initial data from CSV files
   CSV.foreach(("./notes/station-data.csv"), headers: true, col_sep: ",") do |row|
-    s = Station.new(identifier: row[0], name: row[1], address: row[6])
+    s = Station.new(identifier: row[0], name: row[1], address: row[6],lat: row[7],long: row[8])
     s.save!
   end
   CSV.foreach(("./notes/bike-data.csv"), headers: true, col_sep: ",") do |row|
@@ -14,6 +14,11 @@ task initial_import: [:environment] do
   CSV.foreach(("./notes/user-data.csv"), headers: true, col_sep: ",") do |row|
     u = User.new(identifier: row[0], username: row[1],first: row[2],last: row[3], email: row[4], password: row[5])
     u.save!
+  end
+
+  CSV.foreach(("./notes/rental-data.csv"), headers: true, col_sep: ",") do |row|
+    r = Rental.new(identifier: row[0], user: User.find_by(identifier: row[1]), bike: Bike.find_by(identifier: row[2]), start_time: row[3], end_time: row[4], over_time: row[5], duration: row[6])
+    r.save!
   end
 
   # set charges pseudo-randomly (ensure 0 and 100 exist)
@@ -31,12 +36,12 @@ task initial_import: [:environment] do
   end
 
   # if bike mostly charged
-  Bike.select{ |bike| bike.charge>=80}.each do |b|
+  Bike.select{ |bike| bike.charge>=50}.each do |b|
     b.update(status: "available")
     b.save!
   end
   # if bike not mostly charged
-  Bike.select{ |bike| bike.charge<80}.each do |b|
+  Bike.select{ |bike| bike.charge<50}.each do |b|
     b.update(status: "charging")
     b.save!
   end
@@ -57,5 +62,7 @@ task initial_import: [:environment] do
     s.update(capacity: current + rand(1...5))
     s.save!
   end
+
+
 
 end
