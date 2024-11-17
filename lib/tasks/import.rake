@@ -16,6 +16,11 @@ task initial_import: [:environment] do
     u.save!
   end
 
+  CSV.foreach(("./notes/rental-data.csv"), headers: true, col_sep: ",") do |row|
+    r = Rental.new(identifier: row[0], user: User.find_by(identifier: row[1]), bike: Bike.find_by(identifier: row[2]), start_time: row[3], end_time: row[4], over_time: row[5], duration: row[6])
+    r.save!
+  end
+
   # set charges pseudo-randomly (ensure 0 and 100 exist)
   Bike.select{|b| b[:identifier]<10000}.each do |b|
     b.charge=rand(0...100)
@@ -31,12 +36,12 @@ task initial_import: [:environment] do
   end
 
   # if bike mostly charged
-  Bike.select{ |bike| bike.charge>=80}.each do |b|
+  Bike.select{ |bike| bike.charge>=50}.each do |b|
     b.update(status: "available")
     b.save!
   end
   # if bike not mostly charged
-  Bike.select{ |bike| bike.charge<80}.each do |b|
+  Bike.select{ |bike| bike.charge<50}.each do |b|
     b.update(status: "charging")
     b.save!
   end
@@ -57,5 +62,7 @@ task initial_import: [:environment] do
     s.update(capacity: current + rand(1...5))
     s.save!
   end
+
+
 
 end

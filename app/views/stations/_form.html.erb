@@ -3,16 +3,18 @@
     <div class="bike-form">
         <%= form_with(url: rentals_path, local: true) do |form| %>
         <%# if there are bikes at the station, display and allow user to select one%>
-        <% if @station.docked_bikes.present? %>
-        <% @station.docked_bikes.each do |bike| %>
-        <%# radio_button is the button style %>
-        <label class="radio-button-container">
-            <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
-            <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged, #{bike.status.capitalize}", value: bike.id %>
-            <span class="radio"></span>
-        </label>
-        <% end %>
-    </div>
+        <% if @station.docked_bikes.where(status: "available").present? %>
+            <% @station.docked_bikes.each do |bike| %>
+                <% if bike.status == "available"%>
+                <%# radio_button is the button style %>
+                <label class="radio-button-container">
+                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
+                    <%# 0 % charged is hard coded right now %>
+                    <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged, #{bike.status.capitalize}", value: bike.id %>
+                    <span class="radio"></span>
+                </label>
+                <% end %>
+            <% end %>
     <div class="form-container">
         <%# allow user to select duration of ride %>
         <h1><strong>Select Ride Duration:</strong></h1>
