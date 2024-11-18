@@ -1,15 +1,16 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
     <div class="section-title-centered">
       Rent a Bike!
     </div>
     <%= render(partial: 'stations/toggle') %>
     <br>
-    <div class="flexbox vertical stretch">
+    <div>
       <% if @view == 'map' %>
+        <div class="map-view-container">
         <%= render "dropdown", stations: @stations %>
         <%= render(partial: 'layouts/map') %>
+        </div>
       <% else %>
         <% if @stations.present? %>
           <div class="max-w-7xl mx-auto mt-12">
@@ -24,5 +25,4 @@
         <% end %>
       <% end %>
     </div>
-	</div>
 </div>
