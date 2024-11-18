@@ -8,14 +8,13 @@
       <div class="row">
           <div class="column">
           <h1>Congrats, you have biked 100 miles! </h1>
+          </div>
+          <div class="column">
+          <div class="left">
           <div class="button">
-          <%= link_to('Edit Profile!', stations_path) %>
-      </div><br>
-      </div>
-      <div>
-
-        <h1>User Info</h1>
-      </div>
+             <%= link_to('Edit Profile!', user_path(current_user)) %>
+            </div><br>
+            <br><h1>User Info</h1>
       <div class="flexbox">
           First Name: <%= @user.first %>
       </div>
@@ -24,6 +23,8 @@
       </div>
       <div class="flexbox">
           Email: <%= @user.email %>
+      </div>
+      </div>
       </div>
 </div>
 </div>
