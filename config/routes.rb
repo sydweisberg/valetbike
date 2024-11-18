@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get '/users', to: 'users#index'
   get '/about', to: 'about#index'
   get '/signup', to: 'users#new', as: 'signup'
-  resources :users, only: [:create]
-  get '/users/:id', to: 'users#show', as: 'user'
+  resources :users, only: [:create, :update, :edit, :show]
   resources :rentals
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
@@ -19,5 +18,4 @@ Rails.application.routes.draw do
       patch 'return'  # PATCH request to handle the return action for a specific bike
     end
   end
-
 end
