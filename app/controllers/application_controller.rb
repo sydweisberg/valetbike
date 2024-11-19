@@ -17,15 +17,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_rental
-    if session[:current_rental_id] && Rental.find_by(id: session[:current_rental_id]).end_time > Time.now
-      @current_rental = Rental.find_by(id: session[:current_rental_id])
-    else
-      @current_rental = nil
-    end
-
+    # set current rental to the rental that matches current user id and is active
+    # this hinges on users only having one active rental, if we allow uses more than one rental we will have to to change this
+    @current_rental = Rental.find_by(user_id: session[:user_id], active: true)
   end
   
   def active_rental?
+    # check if current_rental is nil, meaning current user has no active rentals
     !current_rental.nil?
   end
 
