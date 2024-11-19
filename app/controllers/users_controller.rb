@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :validate_user_profile_page, only: [:show]
 
   # GET /users or /users.json
   def index
@@ -47,6 +48,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def validate_user_profile_page
+    @user = User.find(params[:id])
+
+    if current_user != @user
+      redirect_to root_path
     end
   end
 
