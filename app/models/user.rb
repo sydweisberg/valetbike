@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :first, presence: true
   validates :last, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A(.+)@(.+)\z/, message: "Email invalid"  }
+  attribute :hours, :float
 
   has_many :rentals
 end

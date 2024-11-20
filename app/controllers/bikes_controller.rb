@@ -21,6 +21,12 @@ class BikesController < ApplicationController
       end
       # change rental to inactive
       @rental.update(active: false)
+      # get current user
+      @user = User.find_by(id: session[:user_id])
+      # calculate elapsed hours, divied by 3600 because ruby time is in seconds
+      elapsed_hours = (Time.now - @rental.start_time) / 3600.0
+      # update user hours to reflect ride
+      @user.update(hours: @user.hours + elapsed_hours)
       # redirects the users back to the rental page
       redirect_to stations_path
     else
