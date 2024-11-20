@@ -39,7 +39,7 @@ class RentalsController < ApplicationController
       else
         # else, display flash alert and refresh the page for the current station
         format.html do
-          flash.alert = "Invalid rental."
+          flash.alert = "Please select a bike."
           redirect_to stations_path(@station), status: :unprocessable_entity
         end
         format.json { render json: @rental.errors, status: :unprocessable_entity }

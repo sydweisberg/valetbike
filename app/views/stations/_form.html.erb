@@ -1,3 +1,10 @@
+<%# molly this is the part that needs styling %>
+<%# displays flash alert if there is one %>
+<% if flash[:alert] %>
+    <div class="alert alert-danger">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
     <h1><strong>Available Bikes:</strong></h1>
     <%# did not use model: @rental because arguments were not being wrapped in rental key, using name: rental[attribute] syntax instead %>
     <div class="bike-form">
@@ -8,7 +15,7 @@
                 <% if bike.status == "available"%>
                 <%# radio_button is the button style %>
                 <label class="radio-button-container">
-                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio", required: true %>
+                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio" %>
                     <%# 0 % charged is hard coded right now %>
                     <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged, #{bike.status.capitalize}", value: bike.id %>
                     <span class="radio"></span>

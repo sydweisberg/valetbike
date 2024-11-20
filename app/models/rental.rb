@@ -1,6 +1,7 @@
 class Rental < ApplicationRecord
   validates_presence_of    :identifier
   validates_uniqueness_of  :identifier
+  validates_presence_of :bike_id
   attribute :start_time, :datetime
   attribute :end_time, :datetime
   attribute :over_time, :boolean
