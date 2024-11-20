@@ -30,8 +30,8 @@ class BikesController < ApplicationController
       # redirects the users back to the rental page
       redirect_to stations_path
     else
-        # show alert/do not submit return if an invalid station ID is entered
-        flash.alert = "Invalid station ID."
+        # this isn't showing an alert, but it also isn't submitting the return
+        flash.alert = "Please enter a valid station ID."
         redirect_to rental_path(current_rental), status: :unprocessable_entity
     end
   end
