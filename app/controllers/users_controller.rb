@@ -28,7 +28,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
     else
-      render :new, notice: 'User was not created.'
+      flash[:alert] = @user.errors.full_messages.join(", ")
+      redirect_to signup_path, notice: 'User was not created.'
     end
   end
 
