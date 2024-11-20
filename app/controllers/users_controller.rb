@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update ]
   before_action :validate_user_profile_page, only: [:show]
 
   # GET /users or /users.json
@@ -43,11 +43,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    session[:user_id] = nil
+    @user = User.find(params[:id])
     @user.destroy
-
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to root_path, flash: { success: 'Deleted Profile Successfully' } }
     end
   end
 
