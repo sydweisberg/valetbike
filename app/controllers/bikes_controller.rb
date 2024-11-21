@@ -14,7 +14,7 @@ class BikesController < ApplicationController
       # updates bike to reflect being returned
       @bike.update(status: "available", current_station_id: station_id)
       # gets current rental
-      @rental = Rental.find_by(user_id: session[:user_id], active: true)
+      @rental = Rental.find(params[:current_rental_id])
       # if bike was returned late, set over_time = true
       if @rental.end_time < Time.now
         @rental.update(over_time: true)
@@ -28,7 +28,7 @@ class BikesController < ApplicationController
       # update user hours to reflect ride
       @user.update(hours: @user.hours + elapsed_hours)
       # redirects the users back to the rental page
-      redirect_to stations_path
+      redirect_to return_path
     else
         # this isn't showing an alert, but it also isn't submitting the return
         flash.alert = "Please enter a valid station ID."

@@ -5,6 +5,7 @@ class RentalsController < ApplicationController
   # GET /rentals or /rentals.json
   def index
     @rentals = Rental.all
+    @user = User.find(session[:user_id])
   end
 
   # GET /rentals/1 or /rentals/1.json
@@ -27,25 +28,32 @@ class RentalsController < ApplicationController
   def create
     @rental = Rental.new(rental_params)
     respond_to do |format|
-      if @rental.save
-        # if the rental is valid...
-        # make the start time of the rental the time the rental was created
-        # use rental duration to calculate correct end time
-        # set active to true
-        @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
-        # find bike associated with rental, and update it so it is not at a station and is rented
-        bike = Bike.find_by(id: @rental.bike_id)
-        bike.update(status: "rented", current_station_id: nil)
-        # redirct user to the page for their rental
-        format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
-      else
-        # else, display flash alert and refresh the page for the current station
-        format.html do
-          flash.alert = "Please select a bike."
-          redirect_to stations_path(@station), status: :unprocessable_entity
-        end
-        format.json { render json: @rental.errors, status: :unprocessable_entity }
+    # check if user already has five active rentals, then display flash message and do not save rental
+    if Rental.where(user_id: session[:user_id], active: true).count == 5
+      format.html do
+        flash.alert = "You can only rent five bikes at once."
+        redirect_to rentals_path, status: :unprocessable_entity
       end
+      format.json { render json: @rental.errors, status: :unprocessable_entity } 
+    elsif @rental.save
+      # if the rental is valid...
+      # make the start time of the rental the time the rental was created
+      # use rental duration to calculate correct end time
+      # set active to true
+      @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
+      # find bike associated with rental, and update it so it is not at a station and is rented
+      bike = Bike.find_by(id: @rental.bike_id)
+      bike.update(status: "rented", current_station_id: nil)
+      # redirct user to the page for their rental
+      format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
+    else
+       # else, display flash alert and refresh the page for the current station
+      format.html do
+        flash.alert = "Please select a bike."
+        redirect_to stations_path(@station), status: :unprocessable_entity
+      end
+      format.json { render json: @rental.errors, status: :unprocessable_entity }
+    end
     end
   end
 

@@ -8,7 +8,8 @@
     <li><%= link_to('Sign In', login_path) %></li>
   <% end %>
   <% if active_rental? %>
-  <li><%= link_to('Rent', rental_path(current_rental)) %></li>
+  <%# if there is an active rental, link to rental list page %>
+  <li><%= link_to('Rent', rentals_path) %></li>
   <% else %>
   <li><%= link_to('Rent', stations_path) %></li>
   <% end %>

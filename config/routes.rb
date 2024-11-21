@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/bikes', to: 'bikes#index'
   get '/stations', to: 'stations#index'
   get '/stations/:id', to: 'stations#show', as: 'station'
+  get '/return', to: 'bikes#index'
+  get '/users', to: 'users#index'
   resources :rentals
   get '/about', to: 'about#index'
   get '/signup', to: 'users#new', as: 'signup'

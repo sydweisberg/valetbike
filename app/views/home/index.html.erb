@@ -13,7 +13,7 @@
             </div>
             <div class="button">
                 <% if active_rental? %>
-                <%= link_to('Rent a Bike!', rental_path(current_rental)) %>
+                <%= link_to('Rent a Bike!', rentals_path) %>
                 <% else %>
                 <%= link_to('Rent a Bike!', stations_path) %>
                 <% end %>
