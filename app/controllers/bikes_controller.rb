@@ -14,7 +14,7 @@ class BikesController < ApplicationController
       # updates bike to reflect being returned
       @bike.update(status: "available", current_station_id: station_id)
       # gets current rental
-      @rental = Rental.find_by(user_id: session[:user_id], active: true)
+      @rental = Rental.find(params[:current_rental_id])
       # if bike was returned late, set over_time = true
       if @rental.end_time < Time.now
         @rental.update(over_time: true)
