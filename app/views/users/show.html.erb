@@ -1,10 +1,11 @@
 <%= render(partial: 'layouts/header') %>
+
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title-centered">
       Hello, <%= @user.first %>!
     </div>
-      <div ="container">
+    <div ="container">
       <div class="row">
           <div class="column">
           <%# display number of hours a user has biked in whole hours %>
@@ -12,21 +13,25 @@
           </div>
           <div class="column">
           <div class="left">
-          <div class="button">
-             <%= link_to('Edit Profile!', edit_user_path(current_user)) %>
+            <div class="button">
+              <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+            </div>
+            <div class="button">
+              <%= button_to('Delete Profile', user_path, method: :delete) %>
             </div><br>
             <br><h1>User Info</h1>
-      <div class="flexbox">
-          First Name: <%= @user.first %>
+            <div class="flexbox">
+              First Name: <%= @user.first %>
+            </div>
+            <div class="flexbox">
+              Last Name: <%= @user.last %>
+            </div>
+            <div class="flexbox">
+              Email: <%= @user.email %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flexbox">
-          Last Name: <%= @user.last %>
-      </div>
-      <div class="flexbox">
-          Email: <%= @user.email %>
-      </div>
-      </div>
-      </div>
-</div>
-</div>
+    </div>
+  </div>
 </div>
