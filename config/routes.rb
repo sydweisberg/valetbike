@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/stations', to: 'stations#index'
   get '/stations/:id', to: 'stations#show', as: 'station'
   get '/rentals', to: 'rentals#index'
+  get '/return', to: 'bikes#index'
   resources :rentals, only: [:create]
   get '/users', to: 'users#index'
   get '/about', to: 'about#index'

@@ -1,20 +1,13 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      Welcome to Syd's ValetBike!
-    </div>
-        <div class="flexbox">
-      <%= link_to 'View Station List', stations_path() %>
-    </div>
-    <div class="flexbox vertical stretch">
-      <% if @bikes.present? %>
-        <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
-      <% else %>
-      <div class="empty">
-        No stations found.
-      </div>
-      <% end %>
-    </div>
-	</div>
+<div class="section-inner flexbox vertical stretch">
+<div class="section-title-centered">
+  Thanks you for returning your bike!
+</div>
+  <h1>We hope to see you again soon.</h1>
+  <% if active_rental? %>
+    <%# if there is an active rental, link to rental list page %>
+    <%= link_to('View Active Rentals', rentals_path) %>
+  <% end %>
+</div>
 </div>
