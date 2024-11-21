@@ -22,8 +22,8 @@
         <tr>
             <%= link_to rental_path(rental.id) do %>
             <td><%= link_to i + 1, rental_path(rental.id) %></td>
-            <td><%= link_to rental.start_time, rental_path(rental.id) %></td>
-            <td><%= link_to rental.end_time, rental_path(rental.id) %></td>
+            <td><%= link_to rental.start_time.strftime("%H:%M") , rental_path(rental.id) %></td>
+            <td><%= link_to rental.end_time.strftime("%H:%M") , rental_path(rental.id) %></td>
             <td><%= link_to rental.bike_id, rental_path(rental.id) %></td>
             <% end %>
         </tr>
