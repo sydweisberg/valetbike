@@ -21,7 +21,7 @@
             <%= link_to station_path(station.id) do %>
             <td><%= link_to station.name, station_path(station.id) %></td>
             <td><%= link_to station.address, station_path(station.id) %></td>
-            <td><%= count_rentable_bikes(station) %></td>
+            <td><%= link_to count_rentable_bikes(station), station_path(station.id) %></td>
             <% end %>
         </tr>
         <% end %>
