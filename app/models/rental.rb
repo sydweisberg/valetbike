@@ -8,6 +8,6 @@ class Rental < ApplicationRecord
   attribute :duration, :integer
   attribute :active, :boolean
 
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :bike
 end
