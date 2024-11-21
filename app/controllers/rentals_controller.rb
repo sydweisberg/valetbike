@@ -10,7 +10,8 @@ class RentalsController < ApplicationController
   # GET /rentals/1 or /rentals/1.json
   def show
     @rental = Rental.find(params[:id])
-    @bike = Bike.find(@rental.bike_id)
+    @bike = Bike.find(@rental.id)
+    @stations = Station.all
   end
 
   # GET /rentals/new
@@ -30,16 +31,17 @@ class RentalsController < ApplicationController
         # if the rental is valid...
         # make the start time of the rental the time the rental was created
         # use rental duration to calculate correct end time
-        @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes)
+        # set active to true
+        @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
+        # find bike associated with rental, and update it so it is not at a station and is rented
         bike = Bike.find_by(id: @rental.bike_id)
         bike.update(status: "rented", current_station_id: nil)
-        session[:current_rental_id] = @rental.id
         # redirct user to the page for their rental
         format.html { redirect_to rental_path(@rental), notice: "Rental was successfully created."}
       else
         # else, display flash alert and refresh the page for the current station
         format.html do
-          flash.alert = "Invalid rental."
+          flash.alert = "Please select a bike."
           redirect_to stations_path(@station), status: :unprocessable_entity
         end
         format.json { render json: @rental.errors, status: :unprocessable_entity }

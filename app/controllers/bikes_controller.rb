@@ -7,20 +7,31 @@ class BikesController < ApplicationController
   def return
     # gets return station id based on the parameter passed to return from the form
     station_id = params[:station_id] 
+    # if return station id is valid
     if !Station.find_by(id: station_id).nil?
       # gets correct bike object based on id
       @bike = Bike.find(params[:id])
-      # updates the bikes status, and the current station id
+      # updates bike to reflect being returned
       @bike.update(status: "available", current_station_id: station_id)
-      if Rental.find(session[:current_rental_id]).end_time < Time.now
-        Rental.find(session[:current_rental_id]).update(over_time: true)
+      # gets current rental
+      @rental = Rental.find_by(user_id: session[:user_id], active: true)
+      # if bike was returned late, set over_time = true
+      if @rental.end_time < Time.now
+        @rental.update(over_time: true)
       end
-      session.update(current_rental_id: nil)
+      # change rental to inactive
+      @rental.update(active: false)
+      # get current user
+      @user = User.find_by(id: session[:user_id])
+      # calculate elapsed hours, divied by 3600 because ruby time is in seconds
+      elapsed_hours = (Time.now - @rental.start_time) / 3600.0
+      # update user hours to reflect ride
+      @user.update(hours: @user.hours + elapsed_hours)
       # redirects the users back to the rental page
       redirect_to stations_path
     else
         # this isn't showing an alert, but it also isn't submitting the return
-        flash.alert = "Invalid station ID."
+        flash.alert = "Please enter a valid station ID."
         redirect_to rental_path(current_rental), status: :unprocessable_entity
     end
   end

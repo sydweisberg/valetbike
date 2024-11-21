@@ -7,10 +7,11 @@
     </div>
     <div ="container">
       <div class="row">
-        <div class="column">
-          <h1>Congrats, you have biked 100 miles! </h1>
-        </div>
-        <div class="column">
+          <div class="column">
+          <%# display number of hours a user has biked in whole hours %>
+          <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours! </h1>
+          </div>
+          <div class="column">
           <div class="left">
             <div class="button">
               <%= link_to('Edit Profile', edit_user_path(current_user)) %>

@@ -6,5 +6,9 @@
   </div>
 </div>
 </div>
-
+<% if flash[:alert] %>
+    <div class="alert alert-danger">
+        <%= flash[:alert] %>
+    </div>
+<% end %>
 <%= render(partial: "form") %>

@@ -1,15 +1,6 @@
 <%= form_with model: @user, local: true do |form| %>
-
-  <% if @user.errors.any? %>
-    <div>
-      <% @user.errors.full_messages.each do |error| %>
-        <li><%= error %></li>
-      <% end %>
-    </div>
-  <% end %>
   <div class="form-container">
     <%# <%= @user.errors.full_messages.inspect %>
-
     <div>
       <%# <%= form.label :identifier %>
       <%= form.hidden_field :identifier, value: generate_user_id() , class:"field" %>

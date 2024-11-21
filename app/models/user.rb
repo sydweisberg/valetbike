@@ -3,9 +3,12 @@ class User < ApplicationRecord
 
   validates :identifier, presence: true, numericality: true, uniqueness: true
   validates :username, presence: true, uniqueness: true, length: { maximum: 20, too_long: "%{count} characters is the maximum allowed" }
-  validates :first, presence: true
-  validates :last, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\A(.+)@(.+)\z/, message: "Email invalid"  }
+  validates :first, presence: { message: "name can't be blank" }
+  validates :last, presence: { message: "name can't be blank" }
+  validates :email, presence: true, uniqueness: true, format: { with: /\A(.+)@(.+)\z/, message: "invalid"  }
+  attribute :hours, :float
 
   has_many :rentals
 end
+
+# do we actually validate length of password?

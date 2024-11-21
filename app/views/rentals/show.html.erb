@@ -8,11 +8,6 @@
         <div style="text-align: center;" class="section-title">
             Enjoy your ride!
         </div>
-        <% if flash[:alert] %>
-          <div class="alert alert-danger">
-          <%= flash[:alert] %>
-          </div>
-        <% end %>
         <h1 style="text-align: center;">Your ride ends in...</h1>
         <div style="font-size: 2rem; font-weight: bold; color: #1F487E; text-align: center;" id="countdown">
           &nbsp;
@@ -20,6 +15,11 @@
         <br><br>
         <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
         <br><br>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
         <div class="button" onclick="popup()">
             Return Your Bike
         </div>
@@ -28,11 +28,14 @@
             <h1>Would you like to return your bike?</h1>
             <p>We hoped you enjoyed your ride.</p>
           <%# form to return the bike to a specific station %>
-          <%= form_with url: return_bike_path(@bike), method: :patch, local: true do |form| %>
-            <%= form.hidden_field :current_rental_id, value: @rental.id %>
+          <%# @rental.bike_id ensures that the bike_id is being passed as id, not the rental id %>
+          <%= form_with url: return_bike_path(@rental.bike_id), method: :patch, local: true do |form| %>
+            <%= form.hidden_field :current_bike_id, value: @rental.bike_id %>
             <div>
-              <%# tet field for the user to enter return station id %>
-              <%= form.text_field :station_id, placeholder: "Enter return station ID", class: "field" %>
+              <%# text field for the user to enter return station id %>
+              <%= form.select :station_id, @stations.map {|station| [station.name, station.id]}.sort, { prompt: "Select a Station" },
+                id: "dropdown"
+            %>
             </div>
             <div style="display: flex; justify-content: space-around; margin: 0% 30%">
             <%# button to close popup (not return the bike) %>
