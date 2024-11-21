@@ -11,6 +11,7 @@ class RentalsController < ApplicationController
   def show
     @rental = Rental.find(params[:id])
     @bike = Bike.find(@rental.id)
+    @stations = Station.all
   end
 
   # GET /rentals/new

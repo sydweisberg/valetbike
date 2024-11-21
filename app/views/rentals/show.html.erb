@@ -33,7 +33,9 @@
             <%= form.hidden_field :current_bike_id, value: @rental.bike_id %>
             <div>
               <%# text field for the user to enter return station id %>
-              <%= form.text_field :station_id, placeholder: "Enter return station ID", class: "field" %>
+              <%= form.select :station_id, @stations.map {|station| [station.name, station.id]}.sort, { prompt: "Select a Station" },
+                id: "dropdown"
+            %>
             </div>
             <div style="display: flex; justify-content: space-around; margin: 0% 30%">
             <%# button to close popup (not return the bike) %>
