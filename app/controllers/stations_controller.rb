@@ -1,7 +1,11 @@
 class StationsController < ApplicationController
-
+  include StationsHelper
   def index
-    @stations = Station.all.order(params[:sort])
+    if params[:sort] == "available_bikes"
+      @stations = Station.all.sort_by { |station| count_rentable_bikes(station) }.reverse
+    else
+      @stations = Station.all.order(params[:sort])
+    end
     @view = params[:view] || 'list'
   end
 
