@@ -33,7 +33,7 @@
             <%= form.hidden_field :current_bike_id, value: @rental.bike_id %>
             <div>
               <%# text field for the user to enter return station id %>
-              <%= form.select :station_id, [*1..Station.count], {},
+              <%= form.select :station_id, @stations.map {|station| [station.name, station.id]}.sort, { prompt: "Select a Station" },
                 id: "dropdown"
             %>
             </div>
