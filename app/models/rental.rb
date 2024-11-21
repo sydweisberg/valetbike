@@ -6,6 +6,6 @@ class Rental < ApplicationRecord
   attribute :over_time, :boolean
   attribute :duration, :integer
 
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :bike
 end
