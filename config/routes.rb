@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root to: "home#index"
-  get '/bikes', to: 'bikes#index'
-  get '/stations', to: 'stations#index'
-  get '/stations/:id', to: 'stations#show', as: 'station'
+  resources :stations, only: [:index, :show]
   resources :rentals
   get '/about', to: 'about#index'
   get '/signup', to: 'users#new', as: 'signup'
