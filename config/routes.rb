@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     end
   end
   post 'create-checkout-session', to: 'stripe#create_checkout_session'
+  get '/stripe/success', to: 'stripe#success', as: 'stripe_success'
 end
