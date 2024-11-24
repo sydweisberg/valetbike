@@ -19,5 +19,8 @@ module Valetbike
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.before_configuration do
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    end
   end
 end
