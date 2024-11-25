@@ -1,5 +1,6 @@
+<%# imports pop up js file %>
+<%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
 <%= render(partial: 'layouts/header') %>
-
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title-centered">
@@ -16,9 +17,12 @@
             <div class="button">
               <%= link_to('Edit Profile', edit_user_path(current_user)) %>
             </div>
-            <div class="button">
-              <%= button_to('Delete Profile', user_path, method: :delete) %>
-            </div><br>
+            <div class="button" onclick="popup()">
+              Delete Profile
+            </div>
+            <%# <div class="button"> %>
+              <%# <%= button_to('Delete Profile', user_path, method: :delete) %>
+            <%# </div>%> <br>
             <br><h1>User Info</h1>
             <div class="flexbox">
               First Name: <%= @user.first %>
@@ -38,6 +42,21 @@
               <button id="checkout-button">Add Funds</button>
             </div>
           </div>
+        </div>
+      </div>
+      <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
+        <div style="text-align: left;">
+          <h1>Would you like to delete your profile?</h1>
+          <p>We hoped you enjoyed your time with Valet Bike.</p>
+            <div style="display: flex; justify-content: space-around; margin: 0% 25%">
+              <%# button to close popup%>
+              <div class="button return" onclick="close_popup()">
+                Close
+              </div>
+              <%# button to go through with profile deletion %>
+              <div class="button">
+              <%= button_to('Delete Profile', user_path, method: :delete) %>
+            </div>
         </div>
       </div>
     </div>
