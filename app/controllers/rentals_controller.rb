@@ -24,13 +24,18 @@ class RentalsController < ApplicationController
   def edit
   end
 
+  # returns if the user has five rentals, false if less than, true if five
+  def five_rentals?
+    return (Rental.where(user_id: session[:user_id], active: true).count == 5)
+  end
+
   # POST /rentals or /rentals.json
   def create
     @rental = Rental.new(rental_params)
     amount = rental_cost(@rental.duration)
     respond_to do |format|
     # check if user already has five active rentals, then display flash message and do not save rental
-    if Rental.where(user_id: session[:user_id], active: true).count == 5
+    if five_rentals?
       format.html do
         flash.alert = "You can only rent five bikes at once."
         redirect_to rentals_path, status: :unprocessable_entity
@@ -88,6 +93,7 @@ class RentalsController < ApplicationController
     end
   end
 
+  # cost of each rental duration
   def rental_cost(duration)
     case duration
       when 15
