@@ -34,7 +34,13 @@ class RentalsController < ApplicationController
         flash.alert = "You can only rent five bikes at once."
         redirect_to rentals_path, status: :unprocessable_entity
       end
-      format.json { render json: @rental.errors, status: :unprocessable_entity } 
+      format.json { render json: @rental.errors, status: :unprocessable_entity }
+    elsif current_user.balance < rental_cost(@rental.duration)
+      format.html do
+        flash.alert = "You do not have sufficient funds to rent this bike."
+        redirect_to rentals_path, status: :unprocessable_entity
+      end
+      format.json { render json: @rental.errors, status: :unprocessable_entity }
     elsif @rental.save
       # if the rental is valid...
       # make the start time of the rental the time the rental was created
@@ -77,6 +83,29 @@ class RentalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to rentals_url, notice: "Rental was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def rental_cost(duration)
+    case duration
+      when 15
+        return 2.0
+      when 30
+        return 3.0
+      when 45
+        return 4.0
+      when 60
+        return 5.0
+      when 75
+        return 6.0
+      when 90
+        return 7.0
+      when 105
+        return 8.0
+      when 120
+        return 9.0
+      else
+        return 0.0
     end
   end
 
