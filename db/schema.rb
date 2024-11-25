@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_24_223847) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_163728) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "current_station_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_24_223847) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "hours"
+    t.float "hours", default: 0.0
     t.float "balance", default: 0.0
   end
 

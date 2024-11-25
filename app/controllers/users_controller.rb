@@ -25,8 +25,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # intialize users to 0 travel hours
-      @user.update(hours: 0)
       session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
     else
