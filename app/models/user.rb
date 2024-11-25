@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :first, presence: { message: "name can't be blank" }
   validates :last, presence: { message: "name can't be blank" }
   validates :email, presence: true, uniqueness: true, format: { with: /\A(.+)@(.+)\z/, message: "invalid"  }
+  validates :password, length: { minimum: 8 }
   attribute :hours, :float
   attribute :balance, :float
 
