@@ -35,3 +35,7 @@
     height: 2rem;
     border: 2px solid var(--medium-gray-color);
   }
+
+  .button:hover {
+    background-color: var(--button-hover-color);
+  }

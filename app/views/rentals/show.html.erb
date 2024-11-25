@@ -1,3 +1,5 @@
+<%# imports pop up js file %>
+<%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
@@ -52,7 +54,6 @@
         <% end %>
 </div>
 </div>
-
 <script>
 // set the time we are counting down to
 var countdown_time = new Date("<%= @rental.end_time %>").getTime();
@@ -101,14 +102,4 @@ var x = setInterval(function() {
     document.getElementById("countdown").innerHTML = "Your rental is over time.";
   }
 }, 1000);
-
-// Function to show the popup
-function popup() {
-  document.getElementById('popup').style.display = 'block';
-}
-
-// Function to close the popup
-function close_popup() {
-  document.getElementById('popup').style.display = 'none';
-}
 </script>
