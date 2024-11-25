@@ -27,6 +27,7 @@ class RentalsController < ApplicationController
   # POST /rentals or /rentals.json
   def create
     @rental = Rental.new(rental_params)
+    amount = rental_cost(@rental.duration)
     respond_to do |format|
     # check if user already has five active rentals, then display flash message and do not save rental
     if Rental.where(user_id: session[:user_id], active: true).count == 5
@@ -35,7 +36,7 @@ class RentalsController < ApplicationController
         redirect_to rentals_path, status: :unprocessable_entity
       end
       format.json { render json: @rental.errors, status: :unprocessable_entity }
-    elsif current_user.balance < rental_cost(@rental.duration)
+    elsif current_user.balance < amount
       format.html do
         flash.alert = "You do not have sufficient funds to rent this bike."
         redirect_to rentals_path, status: :unprocessable_entity
@@ -46,6 +47,7 @@ class RentalsController < ApplicationController
       # make the start time of the rental the time the rental was created
       # use rental duration to calculate correct end time
       # set active to true
+      current_user.update(balance: current_user.balance - amount)
       @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
       # find bike associated with rental, and update it so it is not at a station and is rented
       bike = Bike.find_by(id: @rental.bike_id)
