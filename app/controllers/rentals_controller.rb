@@ -49,10 +49,9 @@ class RentalsController < ApplicationController
       format.json { render json: @rental.errors, status: :unprocessable_entity }
     elsif @rental.save
       # if the rental is valid...
-      # make the start time of the rental the time the rental was created
-      # use rental duration to calculate correct end time
-      # set active to true
+      # update user's balance to reflect purchase
       current_user.update(balance: current_user.balance - amount)
+      # update start and end time of rental
       @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
       # find bike associated with rental, and update it so it is not at a station and is rented
       bike = Bike.find_by(id: @rental.bike_id)
