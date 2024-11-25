@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_163728) do
     t.datetime "updated_at", null: false
     t.float "hours", default: 0.0
     t.float "balance", default: 0.0
-    t.float "money", default: 0.0
   end
 
   add_foreign_key "rentals", "bikes"

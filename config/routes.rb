@@ -17,4 +17,6 @@ Rails.application.routes.draw do
       patch 'return'  # PATCH request to handle the return action for a specific bike
     end
   end
+  post 'create-checkout-session', to: 'stripe#create_checkout_session'
+  get '/stripe/success', to: 'stripe#success', as: 'stripe_success'
 end
