@@ -27,3 +27,22 @@
     display: table;
     clear: both;
   }
+
+  #price_table {
+    width: 75%;
+  }
+  
+  #price_table td, #price_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #price_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #price_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--sky-blue-color);
+    color: var(--white-color);
+  }
