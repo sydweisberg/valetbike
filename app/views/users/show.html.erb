@@ -29,9 +29,35 @@
             <div class="flexbox">
               Email: <%= @user.email %>
             </div>
+            <div class="flexbox">
+              <%# shows balance to 2 decimal places, even if it is a whole number %>
+              Balance: $<%= sprintf("%.2f", @user.balance) %>
+            </div>
+            <script src="https://js.stripe.com/v3/"></script>
+            <div class="button">
+              <button id="checkout-button">Add Funds</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('checkout-button').addEventListener('click', function () {
+    fetch('/create-checkout-session', {
+      method: 'POST',
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (sessionId) {
+      const stripe = Stripe('pk_test_51QNfAeBdC2IsMXiiJsPSWF48k3gGuIBYmYKqgkutlHrlfbedYz8oLDUPuApV8J4iVdFL0R0kP2zpgw8vQvxgXgjd00eo57lWba'); // Replace with your Stripe publishable key
+      stripe.redirectToCheckout({ sessionId: sessionId.id });
+    })
+    .catch(function (error) {
+      console.error("Error:", error);
+    });
+  });
+</script>

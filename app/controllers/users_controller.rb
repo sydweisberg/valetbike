@@ -25,8 +25,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      # intialize users to 0 travel hours
-      @user.update(hours: 0)
       session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
     else
@@ -70,6 +68,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:identifier, :username, :first, :last, :email, :password)
+      params.require(:user).permit(:identifier, :username, :first, :last, :email, :password, :balance)
     end
 end
