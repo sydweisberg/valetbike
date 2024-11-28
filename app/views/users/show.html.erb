@@ -3,6 +3,11 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
+    <% if flash[:notice] %>
+      <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+    <% end %>
     <div class="section-title-centered">
       Hello, <%= @user.first %>!
     </div>

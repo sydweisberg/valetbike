@@ -29,7 +29,7 @@ class StripeController < ApplicationController
         amount_paid = session.amount_total / 100.0
         user.update_attribute(:balance, user.balance + amount_paid)
         # these do not work :(
-        flash[:notice] = "Payment successful! Your balance is now $#{user.balance}"
+        flash[:notice] = "Payment successful! Your balance is now $#{user.balance}0"
       else
         # this doesn't work :(
         flash[:alert] = "Payment failed, please try again."
