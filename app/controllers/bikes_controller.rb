@@ -31,8 +31,8 @@ class BikesController < ApplicationController
       redirect_to return_path
     else
         # this isn't showing an alert, but it also isn't submitting the return
-        flash.alert = "Please enter a valid station ID."
-        redirect_to rental_path(current_rental), status: :unprocessable_entity
+        flash.now[:alert] = "Please enter a valid station ID."
+        render :edit, status: :unprocessable_entity
     end
   end
 

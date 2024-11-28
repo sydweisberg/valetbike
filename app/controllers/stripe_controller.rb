@@ -26,13 +26,12 @@ class StripeController < ApplicationController
 
       if session.payment_status == 'paid'
         user = User.find(session.client_reference_id)
-
         amount_paid = session.amount_total / 100.0
-        user.balance += amount_paid
-        user.save!
-
-        flash[:notice] = "Payment successful! Your balance is now $#{user.balance}"
+        user.update_attribute(:balance, user.balance + amount_paid)
+        # these do not work :(
+        flash[:notice] = "Payment successful! Your balance is now $#{user.balance}0"
       else
+        # this doesn't work :(
         flash[:alert] = "Payment failed, please try again."
       end
     rescue Stripe::StripeError => e

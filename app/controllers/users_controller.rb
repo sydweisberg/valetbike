@@ -28,8 +28,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
     else
-      flash[:alert] = @user.errors.full_messages.join(", ")
-      redirect_to signup_path, notice: 'User was not created.'
+      flash.now[:alert] = @user.errors.full_messages.join(", ")
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,6 +38,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user, notice: 'Profile updated successfully.'
     else
+      flash.now[:alert] = @user.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
     end
   end
