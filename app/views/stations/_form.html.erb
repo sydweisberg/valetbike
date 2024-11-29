@@ -1,7 +1,7 @@
-<%# molly this is the part that needs styling %>
+<%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
 <%# displays flash alert if there is one %>
 <% if flash[:alert] %>
-    <div class="alert alert-danger">
+    <div class="flash" id="popup" onclick="close_popup()">
         <%= flash[:alert] %>
     </div>
 <% end %>

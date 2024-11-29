@@ -18,7 +18,7 @@
         <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
         <br><br>
         <% if flash[:alert] %>
-          <div class="alert alert-danger">
+          <div class="flash" id="popup" onclick="close_popup()">
             <%= flash[:alert] %>
           </div>
         <% end %>
