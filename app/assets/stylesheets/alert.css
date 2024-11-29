@@ -11,6 +11,14 @@
     text-align: center;
 }
 
+.notice {
+    background-color: green;
+}
+
 .flash:hover {
     background-color: rgb(67, 0, 0);
+}
+
+.notice:hover {
+    background-color: rgb(0, 79, 0);
 }

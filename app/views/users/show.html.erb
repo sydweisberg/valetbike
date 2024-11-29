@@ -4,7 +4,7 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <% if flash[:notice] %>
-      <div class="notice">
+      <div class="flash notice" id="popup" onclick="close_popup()">
           <%= flash[:notice] %>
         </div>
     <% end %>
