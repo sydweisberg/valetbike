@@ -30,6 +30,7 @@
 
   #price_table {
     width: 75%;
+    justify-self: center;  
   }
   
   #price_table td, #price_table th {
