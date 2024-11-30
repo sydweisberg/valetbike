@@ -17,6 +17,9 @@
             <th id="bike_id">
                 <span><%="Bike ID"%></span>
             </th>
+            <th id="over_time">
+                <span><%="Overtime"%></span>
+            </th>
         </tr>
     </thead>
 
@@ -28,6 +31,12 @@
             <td><%= rental.end_time.strftime("%H:%M") %></td>
             <td><%= rental.duration %> minutes</td>
             <td><%= rental.bike_id %></td>
+            <td><% if rental.over_time == true %>
+                    <span style="color: red; font-weight: bold;">Yes</span>
+                <% else %>
+                    No
+                <% end %>
+            </td>
         </tr>
         <% end %>
     </tbody>
