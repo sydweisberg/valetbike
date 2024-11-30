@@ -83,7 +83,6 @@
 
 .map-container {
   justify-content: center;
-  /* background-color: #aaa; */
   gap: 10px;
   display: flex;
 }
