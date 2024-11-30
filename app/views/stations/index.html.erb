@@ -7,9 +7,9 @@
     <br>
     <div>
       <% if @view == 'map' %>
-        <div class="map-view-container">
-        <%= render "dropdown", stations: @stations %>
-        <%= render(partial: 'layouts/map') %>
+        <div class="map-container">
+            <%= render(partial: 'layouts/map') %>
+            <%= render "dropdown", stations: @stations %>
         </div>
       <% else %>
         <% if @stations.present? %>

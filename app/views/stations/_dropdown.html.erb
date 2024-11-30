@@ -1,8 +1,4 @@
 <div class="dropdown">
-  <button onclick="dropdown()" class="dropbtn">
-    <%= image_tag "search_icon.png", alt: "Search Icon", class: "icon" %>
-    Find a Station
-  </button>
   <div id="stationDropdown" class="dropdown-content">
     <input type="text" placeholder="Search..." id="input" onkeyup="filterFunction()">
     <% stations.each do |station| %>
@@ -12,9 +8,6 @@
 </div>
 
 <script>
-  function dropdown() {
-    document.getElementById("stationDropdown").classList.toggle("show");
-  }
 
   function filterFunction() {
     var input, filter, ul, li, a, i;
