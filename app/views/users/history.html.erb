@@ -9,6 +9,9 @@
           <div class="max-w-7xl mx-auto mt-12">
           <center>
             <%= render "history", rentals: @rentals %>
+            <div class="button">
+                <%= link_to "Return to Profile", user_path(current_user) %>
+            </div>
             </center>
           </div>
     </div>
