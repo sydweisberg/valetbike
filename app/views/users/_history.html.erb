@@ -1,0 +1,34 @@
+<table class="styled-table" width=85%>
+    <thead>
+        <tr>
+            <th id="rental-number">
+                <span><%="Rental Number"%> </span>
+            </th>
+
+            <th id="start_time">
+                <span><%="Start Time"%> </span>
+            </th>
+            <th id="end_time">
+                <span><%="End Time"%></span>
+            </th>
+            <th id="duration">
+                <span><%="Duration"%></span>
+            </th>
+            <th id="bike_id">
+                <span><%="Bike ID"%></span>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="active-row">
+        <% rentals.each_with_index do |rental, i| %>
+        <tr>
+            <td><%= i + 1 %></td>
+            <td><%= rental.start_time.strftime("%H:%M") %></td>
+            <td><%= rental.end_time.strftime("%H:%M") %></td>
+            <td><%= rental.duration %> minutes</td>
+            <td><%= rental.bike_id %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

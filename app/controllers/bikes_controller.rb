@@ -19,6 +19,7 @@ class BikesController < ApplicationController
       if @rental.end_time < Time.now
         @rental.update(over_time: true)
       end
+      @rental.update(end_time: Time.now)
       # change rental to inactive
       @rental.update(active: false)
       # get current user
@@ -27,6 +28,7 @@ class BikesController < ApplicationController
       elapsed_hours = (Time.now - @rental.start_time) / 3600.0
       # update user hours to reflect ride
       @user.update_attribute(:hours, @user.hours + elapsed_hours)
+      @rental.update_attribute(:duration, elapsed_hours * 60)
       # redirects the users back to the rental page
       redirect_to return_path
     else
