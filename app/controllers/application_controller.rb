@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    redirect_to login_path, flash: {alert: 'You must be signed in'} if current_user.nil?
+    redirect_to login_path, flash: {alert: 'You must be signed in to rent a bike.'} if current_user.nil?
   end
 
   def current_rental

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
@@ -7,8 +8,8 @@
 </div>
 </div>
 <% if flash[:alert] %>
-    <div class="alert alert-danger">
-        <%= flash[:alert] %>
-    </div>
+    <div class="flash" id="popup" onclick="close_popup()">
+            <%= flash[:alert] %>
+      </div>
 <% end %>
 <%= render(partial: "form") %>
