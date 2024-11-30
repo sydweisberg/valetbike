@@ -10,17 +10,13 @@
     <div class="bike-form">
         <%= form_with(url: rentals_path, local: true) do |form| %>
         <%# if there are bikes at the station, display and allow user to select one%>
-        <% if @station.docked_bikes.where(status: "available").present? %>
-            <% @station.docked_bikes.each do |bike| %>
-                <% if bike.status == "available"%>
-                <%# radio_button is the button style %>
-                <label class="radio-button-container">
-                    <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio" %>
-                    <%# 0 % charged is hard coded right now %>
-                    <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged, #{bike.status.capitalize}", value: bike.id %>
-                    <span class="radio"></span>
-                </label>
-                <% end %>
+        <% if count_available_bikes(@station).present? %>
+                <% bikes_available_sorted(@station).each do |bike|%>
+                    <label class="radio-button-container">
+                        <%= form.radio_button :bike_id, bike.id, name: "rental[bike_id]", class: "custom-radio" %>
+                        <%= form.label :bike_id, "Bike ##{bike.id}, #{bike.charge}% Charged", value: bike.id %>
+                        <span class="radio"></span>
+                    </label>
             <% end %>
     <div class="form-container">
         <%# allow user to select duration of ride %>
@@ -58,7 +54,7 @@
             </div>
         </div>
         <% else %>
-        <%# if there are no bikes availble, display the message %>
+        <%# if there are no bikes available, display the message %>
         <div class="empty">No bikes currently available at station.</div>
         <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
             <div class="return button">
