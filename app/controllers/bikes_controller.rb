@@ -19,6 +19,7 @@ class BikesController < ApplicationController
       if @rental.end_time < Time.now
         @rental.update(over_time: true)
       end
+      @rental.update(end_time: Time.now)
       # change rental to inactive
       @rental.update(active: false)
       # get current user
@@ -26,11 +27,11 @@ class BikesController < ApplicationController
       # calculate elapsed hours, divied by 3600 because ruby time is in seconds
       elapsed_hours = (Time.now - @rental.start_time) / 3600.0
       # update user hours to reflect ride
-      @user.update(hours: @user.hours + elapsed_hours)
+      @user.update_attribute(:hours, @user.hours + elapsed_hours)
+      @rental.update_attribute(:duration, elapsed_hours * 60)
       # redirects the users back to the rental page
       redirect_to return_path
     else
-        # this isn't showing an alert, but it also isn't submitting the return
         flash.now[:alert] = "Please enter a valid station ID."
         render :edit, status: :unprocessable_entity
     end

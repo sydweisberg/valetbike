@@ -81,9 +81,8 @@
   color: var(--delft-blue-color);
 }
 
-.map-view-container {
+.map-container {
+  justify-content: center;
+  gap: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
 }
