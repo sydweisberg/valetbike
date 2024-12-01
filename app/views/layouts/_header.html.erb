@@ -1,18 +1,20 @@
-<ul>
-    <li><%= link_to(image_tag('new_bike_icon.png', alt: 'Bike icon'), root_path) %></li>
-    <% if user_signed_in? %>
-    <li><%= button_to 'Log Out', logout_path, method: :delete %></li>
-    <li><%= link_to('Profile', user_path(current_user)) %></li>
-    <% else %>
-    <li><%= link_to('Sign Up', signup_path) %></li>
-    <li><%= link_to('Sign In', login_path) %></li>
-  <% end %>
-  <% if active_rental? %>
-  <%# if there is an active rental, link to rental list page %>
-  <li><%= link_to('Rent', rentals_path) %></li>
+<div class="header">
+  <div class="header-left">
+    <%= link_to(image_tag('new_bike_icon.png', alt: 'Bike icon'), root_path, class: "logo") %>
+  </div>
+  <% if user_signed_in? %>
+    <%= button_to 'Log Out', logout_path, method: :delete %>
+    <%= link_to('Profile', user_path(current_user)) %>
   <% else %>
-  <li><%= link_to('Rent', stations_path) %></li>
+    <%= link_to('Sign Up', signup_path) %>
+    <%= link_to('Sign In', login_path) %>
   <% end %>
-  <li><%= link_to('About', about_path) %></li>
-  <li class="active"><%= link_to('Home', root_path) %></li>
-</ul>
+
+  <% if active_rental? %>
+    <%= link_to('Rent', rentals_path) %>
+  <% else %>
+    <%= link_to('Rent', stations_path) %>
+  <% end %>
+  <%= link_to('About', about_path) %>
+  <%= link_to('Home', root_path, class: "active") %>
+</div>
