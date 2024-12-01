@@ -1,5 +1,5 @@
 <ul>
-    <li><%= link_to(image_tag('new_bike_icon.png', alt: 'Bike icon'), root_path) %></li>
+    <li class="logo"><%= link_to(image_tag('new_bike_icon.png', alt: 'Bike icon'), root_path) %></li>
     <% if user_signed_in? %>
     <li><%= button_to 'Log Out', logout_path, method: :delete %></li>
     <li><%= link_to('Profile', user_path(current_user)) %></li>
@@ -16,3 +16,22 @@
   <li><%= link_to('About', about_path) %></li>
   <li class="active"><%= link_to('Home', root_path) %></li>
 </ul>
+
+<script>
+  const logo = document.querySelector(".logo");
+  const maxOffset = 300; // Maximum distance the logo should move
+
+  // Function to calculate and update the logo position
+  function updateLogoPosition() {
+    const scrollY = window.scrollY; // Current scroll position
+    const newPosition = Math.min(scrollY, maxOffset); // Limit movement
+    logo.style.transform = `translateX(${newPosition}px)`; // Apply transformation
+  }
+
+  // Update the logo position on scroll
+  window.addEventListener("scroll", updateLogoPosition);
+
+  // Update when the window regains focus
+  window.addEventListener("focus", updateLogoPosition);
+</script>
+
