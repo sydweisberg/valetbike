@@ -11,13 +11,15 @@
                     Welcome to Valet Bike, Riders!
                 <% end %>
             </div>
-            <div class="button">
-                <% if active_rental? %>
-                <%= link_to('Rent a Bike!', rentals_path) %>
-                <% else %>
-                <%= link_to('Rent a Bike!', stations_path) %>
-                <% end %>
-            </div><br>
+            <% if active_rental? %>
+            <%= link_to rentals_path, class: "button" do %>
+                Rent a Bike!
+            <% end %>
+            <% else %>
+            <%= link_to stations_path, class: "button" do %>
+                Rent a Bike!
+            <% end %>
+            <% end %>
             <div>
                 <h1>About Valet Bike</h1>
             </div>

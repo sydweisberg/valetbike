@@ -9,9 +9,10 @@
           <center>
             <%= render "rentals", rentals: @rentals %>
             <% if Rental.where(user_id: session[:user_id], active: true).count < 5 %>
-                <div class="button">
-                    <%= link_to "Rent Another Bike", stations_path %>
-                </div>
+            <%# button %>
+              <%= link_to stations_path, class: "button" do %>
+                Rent Another Bike
+              <% end %>
             <% else %>
                 <p>You have reached the maximum number of current bike rentals.</p>
             <% end %>
