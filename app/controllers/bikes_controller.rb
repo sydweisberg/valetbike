@@ -32,8 +32,8 @@ class BikesController < ApplicationController
       # redirects the users back to the rental page
       redirect_to return_path
     else
-        flash.now[:alert] = "Please enter a valid station ID."
-        render :edit, status: :unprocessable_entity
+      flash.alert = "Please enter a valid station ID."
+      redirect_to rental_path(current_rental), status: :unprocessable_entity
     end
   end
 
