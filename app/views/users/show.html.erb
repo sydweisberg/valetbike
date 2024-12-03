@@ -15,19 +15,22 @@
       <div class="row">
           <div class="column">
           <%# display number of hours a user has biked in whole hours %>
-          <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours! </h1>
+            <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
+            <div class="left">
+              <%= link_to history_path(current_user), class: "button" do %>
+                View Ride History
+              <% end %>
+            </div>
           </div>
           <div class="column">
           <div class="left">
-            <div class="button">
-              <%= link_to('Edit Profile', edit_user_path(current_user)) %>
-            </div>
+            <%= link_to edit_user_path(current_user), class: "button" do %>
+              Edit Profile
+            <% end %>
             <div class="button" onclick="popup()">
               Delete Profile
             </div>
-            <%# <div class="button"> %>
-              <%# <%= button_to('Delete Profile', user_path, method: :delete) %>
-            <%# </div>%> <br>
+            <br>
             <br><h1>User Info</h1>
             <div class="flexbox">
               First Name: <%= @user.first %>
@@ -43,9 +46,7 @@
               Balance: $<%= sprintf("%.2f", @user.balance) %>
             </div>
             <script src="https://js.stripe.com/v3/"></script>
-            <div class="button">
-              <button id="checkout-button">Add Funds</button>
-            </div>
+              <button class="button" id="checkout-button">Add Funds</button>
           </div>
         </div>
       </div>
@@ -59,8 +60,7 @@
                 Close
               </div>
               <%# button to go through with profile deletion %>
-              <div class="button">
-              <%= button_to('Delete Profile', user_path, method: :delete) %>
+              <%= button_to('Delete Profile', user_path, method: :delete, class: "button") %>
             </div>
         </div>
       </div>

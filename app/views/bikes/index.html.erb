@@ -7,9 +7,9 @@
   <h1>We hope to see you again soon.</h1>
   <% if active_rental? %>
     <%# if there is an active rental, link to rental list page %>
-    <div class="button">
-      <%= link_to('View Active Rentals', rentals_path) %>
-    </div>
+    <%= link_to rentals_path, class: "button" do %>
+      View Active Rentals
+    <% end %>
   <% end %>
 </div>
 </div>
