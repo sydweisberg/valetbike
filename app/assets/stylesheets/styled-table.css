@@ -10,7 +10,7 @@
 
 /* header row */
 .styled-table th {
-  padding: 1em;
+  padding: 0;
 }
 
 /* header row */
@@ -20,12 +20,28 @@
   text-align: left;
 }
 
-/* table field */
-.styled-table td {
-  padding:0;
+/* table head (if no link) */
+.styled-table th.no-link {
+  padding: 1em;
+}
+
+/* table head (if link) */
+.styled-table th a {
+  display: block;
+  padding: 1em;
+}
+
+/* table head (if link) hover behavior */
+.styled-table thead tr th a:hover {
+  background-color: var(--sky-blue-color);
 }
 
 /* table field */
+.styled-table td {
+  padding: 0;
+}
+
+/* table row */
 .styled-table tr {
   padding: 0;
 }
