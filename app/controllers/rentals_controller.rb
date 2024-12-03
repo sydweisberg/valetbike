@@ -50,7 +50,7 @@ class RentalsController < ApplicationController
     elsif @rental.save
       # if the rental is valid...
       # update user's balance to reflect purchase
-      current_user.update(balance: current_user.balance - amount)
+      current_user.update_attribute(:balance, current_user.balance - amount)
       # update start and end time of rental
       @rental.update(start_time: @rental.created_at, end_time: @rental.created_at + @rental.duration.minutes, active: true)
       # find bike associated with rental, and update it so it is not at a station and is rented
