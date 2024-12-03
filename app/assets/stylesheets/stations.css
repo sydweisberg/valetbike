@@ -44,43 +44,6 @@
   background-color: var(--sky-blue-color);
 }
 
-/* table for list of stations */
-.styled-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  min-width: 400px;
-  box-shadow: 0 0 20px var(--drop-shadow-opaque);
-}
-
-.styled-table thead tr {
-  background-color: var(--polynesian-blue-color);
-  color: var(--white-color);
-  text-align: left;
-}
-.styled-table th,
-.styled-table td {
-  padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-  border-bottom: 1px solid var(--light-gray-color);
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: var(--dark-white-color);
-}
-
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid var(--delft-blue-color);
-}
-
-.styled-table tbody tr.active-row {
-  font-weight: bold;
-  color: var(--delft-blue-color);
-}
-
 .map-container {
   justify-self: center;
   justify-content: center;
