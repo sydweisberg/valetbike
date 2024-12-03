@@ -1,83 +1,89 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
-<div class="section-inner flexbox vertical stretch">
-<div ="container">
-    <div class="row">
-        <div class="column">
-            <div class="section-title">
-                <% if user_signed_in? %>
-                    Welcome to Valet Bike, <%= current_user.first %>!
-                <% else %>
-                    Welcome to Valet Bike, Riders!
-                <% end %>
+    <div class="section-inner flexbox vertical stretch">
+        <div="container">
+            <div class="row">
+                <div class="column">
+                    <div class="section-title">
+                        <% if user_signed_in? %>
+                        Welcome to Valet Bike, <%= current_user.first %>!
+                        <% else %>
+                        Welcome to Valet Bike, Riders!
+                        <% end %>
+                    </div>
+                    <% if active_rental? %>
+                    <%= link_to rentals_path, class: "button" do %>
+                    Rent a Bike!
+                    <% end %>
+                    <% else %>
+                    <%= link_to stations_path, class: "button" do %>
+                    Rent a Bike!
+                    <% end %>
+                    <% end %>
+                    <div>
+                        <h1>About Valet Bike</h1>
+                    </div>
+                    <div>
+                        <br>
+                        <p>Valet Bike is a bike share program located in Nipmuc Notch. Riders can rent electric bikes and return them to any bike station. Our service is great for commuters or casual riders.</p>
+                    </div>
+                    <br>
+                    <div>
+                        <h1>Pricing</h1>
+                        <div>
+                            <br>
+                            <p>Valet Bike rides are priced in 15 minute increments.</p>
+                        </div>
+                        <br>
+                        <table id="price_table" class="styled-table" style="width: 75%;">
+                            <thead>
+                                <tr>
+                                    <th class="no-link">Time</th>
+                                    <th class="no-link">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="no-link">15 Minutes</td>
+                                    <td class="no-link">$2.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">30 Minutes</td>
+                                    <td class="no-link">$3.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">45 Minutes</td>
+                                    <td class="no-link">$4.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">1 Hour</td>
+                                    <td class="no-link">$5.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">1 Hour and 15 Minutes</td>
+                                    <td class="no-link">$6.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">1 Hour and 30 Minutes</td>
+                                    <td class="no-link">$7.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">1 Hour and 45 Minutes</td>
+                                    <td class="no-link">$8.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-link">2 Hours</td>
+                                    <td class="no-link">$9.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="centered_column">
+                    <h1>Bike Share Locations</h1>
+                    <%= render(partial: 'layouts/map') %>
+                </div>
             </div>
-            <% if active_rental? %>
-            <%= link_to rentals_path, class: "button" do %>
-                Rent a Bike!
-            <% end %>
-            <% else %>
-            <%= link_to stations_path, class: "button" do %>
-                Rent a Bike!
-            <% end %>
-            <% end %>
-            <div>
-                <h1>About Valet Bike</h1>
-            </div>
-            <div>
-               <br><p>Valet Bike is a bike share program located in Nipmuc Notch. Riders can rent electric bikes and return them to any bike station. Our service is great for commuters or casual riders.</p>
-            </div>
-            <br>
-            <div>
-                <h1>Pricing</h1>
-            <div>
-                <br><p>Valet Bike rides are priced in 15 minute increments.</p>
-            </div>
-            <br>
-            <table id="price_table">
-                <tr>
-                    <th>Time</th>
-                    <th>Price</th>
-                </tr>
-                <tr>
-                    <td>15 Minutes</td>
-                    <td>$2.00</td>
-                </tr>
-                <tr>
-                    <td>30 Minutes</td>
-                    <td>$3.00</td>
-                </tr>
-                <tr>
-                    <td>45 Minutes</td>
-                    <td>$4.00</td>
-                </tr>
-                <tr>
-                    <td>1 Hour</td>
-                    <td>$5.00</td>
-                </tr>
-                <tr>
-                    <td>1 Hour and 15 Minutes</td>
-                    <td>$6.00</td>
-                </tr>
-                <tr>
-                    <td>1 Hour and 30 Minutes</td>
-                    <td>$7.00</td>
-                </tr>
-                <tr>
-                    <td>1 Hour and 45 Minutes</td>
-                    <td>$8.00</td>
-                </tr>
-                <tr>
-                    <td>2 Hours</td>
-                    <td>$9.00</td>
-                </tr>
-            </table>
-            </div>
-        </div>
-        <div class="centered_column">
-            <h1>Bike Share Locations</h1>
-            <%= render(partial: 'layouts/map') %>
         </div>
     </div>
-</div>
-</div>
 </div>
