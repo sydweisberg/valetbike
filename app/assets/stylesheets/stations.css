@@ -82,7 +82,9 @@
 }
 
 .map-container {
+  justify-self: center;
   justify-content: center;
   gap: 10px;
   display: flex;
+  width: 75%;
 }
