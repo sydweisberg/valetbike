@@ -1,4 +1,4 @@
-.flash {
+#flash {
     background-color: maroon;
     color: white;
     padding: 10px;
@@ -9,10 +9,6 @@
     width:fit-content;
     align-self: center;
     text-align: center;
-}
-
-.notice {
-    background-color: green;
 }
 
 .flash:hover {
