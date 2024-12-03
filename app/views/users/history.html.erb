@@ -8,7 +8,7 @@
       Return to Profile
     <% end %>
     <div>
-        <% @rentals = Rental.where(user_id: current_user.id) %>
+        <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
           <div class="max-w-7xl mx-auto mt-12">
           <center>
             <%= render "history", rentals: @rentals %>
