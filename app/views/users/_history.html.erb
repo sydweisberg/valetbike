@@ -26,12 +26,12 @@
     <tbody class="active-row">
         <% rentals.each_with_index do |rental, i| %>
         <tr>
-            <td><%= i + 1 %></td>
-            <td><%= rental.start_time.strftime("%H:%M") %></td>
-            <td><%= rental.end_time.strftime("%H:%M") %></td>
-            <td><%= rental.duration %> minutes</td>
-            <td><%= rental.bike_id %></td>
-            <td><% if rental.over_time == true %>
+            <td class="no-link"><%= i + 1 %></td>
+            <td class="no-link"><%= rental.start_time.strftime("%H:%M") %></td>
+            <td class="no-link"><%= rental.end_time.strftime("%H:%M") %></td>
+            <td class="no-link"><%= rental.duration %> minutes</td>
+            <td class="no-link"><%= rental.bike_id %></td>
+            <td class="no-link"><% if rental.over_time == true %>
                     <span style="color: red; font-weight: bold;">Yes</span>
                 <% else %>
                     No
