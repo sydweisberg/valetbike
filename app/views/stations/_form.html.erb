@@ -49,17 +49,17 @@
         <%# submit form %>
         <div class="button-container">
             <%= form.submit "Rent Now!", class: "submit button" %>
-            <div class="return button">
-                <%= link_to 'Return to Stations', stations_path() %>
-            </div>
+            <%= link_to stations_path(), class: "return button" do %>
+                Return to Stations
+            <% end %>
         </div>
         <% else %>
         <%# if there are no bikes available, display the message %>
         <div class="empty">No bikes currently available at station.</div>
         <div class="button-container" style="display: flex; justify-content: center; align-items: center;">
-            <div class="return button">
-                <%= link_to 'Return to Stations', stations_path() %>
-            </div>
+            <%= link_to stations_path(), class: "return button" do %>
+                Return to Stations
+            <% end %>
         </div>
         <% end %>
     <% end %>
