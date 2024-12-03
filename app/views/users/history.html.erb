@@ -4,9 +4,9 @@
       Your Ride History
     </div>
     <h1>You have biked <%= current_user.hours.truncate() %> hours on <%= Rental.where(user_id: current_user.id).count %> rides!</h1>
-    <div class="button">
-      <%= link_to "Return to Profile", user_path(current_user) %>
-    </div>
+    <%= link_to user_path(current_user), class: "button" do %>
+      Return to Profile
+    <% end %>
     <div>
         <% @rentals = Rental.where(user_id: current_user.id) %>
           <div class="max-w-7xl mx-auto mt-12">
