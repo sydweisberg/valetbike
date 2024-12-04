@@ -15,7 +15,7 @@
       <div class="row">
           <div class="column">
             <% top_users = User.order(hours: :desc).limit(10) %>
-            <% if @user in top_users %>
+            <% if top_users.include?(@user) %>
             <%# please add the code for your badge here %>
             You are a top ten user!
             <% end %>
