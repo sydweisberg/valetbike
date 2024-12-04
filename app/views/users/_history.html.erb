@@ -25,7 +25,7 @@
 
     <tbody class="active-row">
         <% rentals.each_with_index do |rental, i| %>
-        <tr>
+        <tr class="no-link">
             <td class="no-link"><%= i + 1 %></td>
             <td class="no-link"><%= rental.start_time.strftime("%H:%M") %></td>
             <td class="no-link"><%= rental.end_time.strftime("%H:%M") %></td>

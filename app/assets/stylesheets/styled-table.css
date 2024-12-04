@@ -69,7 +69,7 @@
 
 /* last row (puts border on bottom of table) */
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid var(--delft-blue-color);
+  border-bottom: 1.5px solid var(--delft-blue-color);
 }
 
 /* if there's an active row, bold it and change the text color */
@@ -84,11 +84,16 @@
 }
 
 /* row hover behavior */
-.styled-table tr:hover {
+/* .styled-table tr.no-link:hover {
+  background-color: var(--sky-blue-color);
+} */
+
+/* row hover behavior */
+.styled-table tr.link:hover {
   background-color: var(--sky-blue-color);
 }
 
 /* row hover behavior (overrides alternating row color) */
-.styled-table tbody tr:nth-of-type(even):hover {
+.styled-table tbody tr.link:nth-of-type(even):hover {
   background-color: var(--sky-blue-color);
 }
