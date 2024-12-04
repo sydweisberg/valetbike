@@ -10,15 +10,16 @@
     <% end %>
     <div class="section-title-centered">
       Hello, <%= @user.first %>!
+      <% top_users = User.order(hours: :desc).limit(10) %>
+      <% if top_users.include?(@user) %>
+      <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
+    <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
+  </span>
+      <% end %>
     </div>
     <div ="container">
       <div class="row">
           <div class="column">
-            <% top_users = User.order(hours: :desc).limit(10) %>
-            <% if top_users.include?(@user) %>
-            <%# please add the code for your badge here %>
-            You are a top ten user!
-            <% end %>
           <%# display number of hours a user has biked in whole hours %>
             <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
             <div class="left">
