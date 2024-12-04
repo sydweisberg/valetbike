@@ -14,6 +14,11 @@
     <div ="container">
       <div class="row">
           <div class="column">
+            <% top_users = User.order(hours_ridden: :desc).limit(10) %>
+            <% if @user in top_users %>
+            <%# please add the code for your badge here %>
+            You are a top ten user!
+            <% end %>
           <%# display number of hours a user has biked in whole hours %>
             <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
             <div class="left">
