@@ -10,6 +10,12 @@
     <% end %>
     <div class="section-title-centered">
       Hello, <%= @user.first %>!
+      <% top_users = User.order(hours: :desc).limit(10) %>
+      <% if top_users.include?(@user) %>
+      <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
+    <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
+  </span>
+      <% end %>
     </div>
     <div ="container">
       <div class="row">
