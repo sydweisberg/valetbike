@@ -1,11 +1,14 @@
 /* table for list of stations */
 .styled-table {
-  border-collapse: collapse;
+  border-collapse: separate;
   margin: 2em 0;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 10%;
-  box-shadow: 0 0 20px var(--drop-shadow-opaque);
+  border: 5px solid var(--light-gray-color);
+  border-radius: 10px;
+  overflow: hidden;
+  border-spacing: 0;
 }
 
 /* header row */
@@ -57,7 +60,7 @@
   padding: 1em;
 }
 
-/* body row */
+/* body row */ 
 .styled-table tbody tr {
   border-bottom: 1px solid var(--light-gray-color);
 }
