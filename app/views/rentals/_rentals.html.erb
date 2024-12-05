@@ -19,7 +19,7 @@
 
     <tbody class="active-row">
         <% rentals.each_with_index do |rental, i| %>
-        <tr>
+        <tr class="link">
             <%= link_to rental_path(rental.id) do %>
             <td><%= link_to i + 1, rental_path(rental.id) %></td>
             <td><%= link_to rental.start_time.strftime("%H:%M") , rental_path(rental.id) %></td>
