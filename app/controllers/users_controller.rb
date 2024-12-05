@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver_later
       redirect_to @user, notice: 'User was successfully created.'
     else
       flash.now[:alert] = @user.errors.full_messages.join(", ")
