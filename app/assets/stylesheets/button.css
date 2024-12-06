@@ -1,4 +1,4 @@
-.button, .toggle_button {
+.button, .toggle_button, .profile_button {
     background-color: var(--sky-blue-color);
     border: var(--black-color);
     color: var(--white-color);
@@ -10,7 +10,7 @@
     font-size: 16px;
   }
 
-  .button.active, .toggle_button.active {
+  .button.active, .toggle_button.active, .profile_button.active {
     background-color: var(--sky-blue-color); /* Change color for active state */
   }
 
@@ -41,7 +41,12 @@
     background-color: var(--button-hover-color);
   }
 
+  .profile_button:hover {
+    background-color: var(--medium-gray-color);
+  }
+
   .profile_button {
       background-color: var(--white-color);
+      color: var(--polynesian-blue-color);
     }
   

@@ -11,7 +11,7 @@
     width: 20rem;
 }
 
-.button {
+.button, .profile_button {
     font-size: medium;
     border-radius: 10px;
     border-width: 2px;

@@ -44,6 +44,7 @@
   border: 4px solid var(--polynesian-blue-color);
   border-radius: 5px;
   background-color: var(--polynesian-blue-color);
+  color: var(--white-color);
   padding: 10px;
   margin: 10px;
 }
