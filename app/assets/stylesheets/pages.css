@@ -54,6 +54,10 @@
   height: 631px;
 }
 
+#table_box {
+  padding: 0;
+}
+
 .speech-box {
   width: 75%;
   height: 50px;

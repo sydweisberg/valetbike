@@ -3,7 +3,6 @@
   border-collapse: separate;
   margin: 2em 0;
   font-size: 0.9em;
-  font-family: sans-serif;
   min-width: 10%;
   border-radius: 10px;
   overflow: hidden;
@@ -98,4 +97,14 @@
 /* row hover behavior (overrides alternating row color) */
 .styled-table tbody tr.link:nth-of-type(even):hover {
   background-color: var(--sky-blue-color);
+}
+
+/* body row every-other-row */
+#history-table tbody tr:nth-of-type(odd) {
+  background-color: var(--white-color);
+  color: black
+}
+
+#history-table tbody tr:nth-of-type(even) {
+  color: black
 }
