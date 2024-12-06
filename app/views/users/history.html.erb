@@ -3,7 +3,7 @@
     <div class="section-title-centered">
       Your Ride History
     </div>
-    <h1>You have biked <%= current_user.hours.truncate() %> hours on <%= Rental.where(user_id: current_user.id).count %> rides!</h1>
+    <h1>You have biked <%= (current_user.hours || 0).truncate() %> hours on <%= Rental.where(user_id: current_user.id).count %> rides!</h1>
     <%= link_to user_path(current_user), class: "button" do %>
       Return to Profile
     <% end %>

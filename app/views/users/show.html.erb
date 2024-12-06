@@ -21,7 +21,7 @@
       <div class="row">
           <div class="column">
           <%# display number of hours a user has biked in whole hours %>
-            <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
+            <h1>Congrats, you have biked <%= (@user.hours || 0).truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
             <div class="left">
               <%= link_to history_user_path(current_user), class: "button" do %>
                 View Ride History
