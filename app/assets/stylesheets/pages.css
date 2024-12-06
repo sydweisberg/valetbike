@@ -62,12 +62,9 @@
   padding: 5px;
   color: var(--polynesian-blue-color);
   text-align: center;
-  font-weight: 150;
-  color: var(--polynesian-blue-color);
-  font-size: larger;
+  font-size: calc(.7vw + .7vh);
   position:relative;
   align-self: center;
-  text-align: center;
 }
 
 .speech-box:before {
@@ -81,7 +78,6 @@
   border-bottom: 10px solid transparent;
   color: var(--polynesian-blue-color);
   text-align: center;
-  font-size: larger;
   left: 20px;
   bottom: -20px;
 }

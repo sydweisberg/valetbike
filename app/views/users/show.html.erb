@@ -12,7 +12,7 @@
       <div class="row">
           <div class="column">
           <div class="box1">
-          <div class="left">
+          <div class="container">
           <div class="section-title-centered">
             Hello, <%= @user.first %>!
             <% top_users = User.order(hours: :desc).limit(10) %>
@@ -22,6 +22,7 @@
         </span>
             <% end %>
             </div>
+            </div>
             <%= link_to edit_user_path(current_user), class: "profile_button" do %>
               Edit Profile
             <% end %>
@@ -29,29 +30,34 @@
               Delete Profile
             </div>
             <br>
+            <br>
             <br><h1>Account Information</h1>
             <br>
             <div class="flexbox">
               First Name: <%= @user.first %>
             </div>
+            <br>
             <div class="flexbox">
               Last Name: <%= @user.last %>
             </div>
+            <br>
             <div class="flexbox">
               Userame: <%= @user.username %>
             </div>
+            <br>
             <div class="flexbox">
               Email: <%= @user.email %>
             </div>
+            <br>
             <div class="flexbox">
               <%# shows balance to 2 decimal places, even if it is a whole number %>
               Balance: $<%= sprintf("%.2f", @user.balance) %>
             </div>
             <br>
+            <br>
             <script src="https://js.stripe.com/v3/"></script>
               <button class="profile_button" id="checkout-button">Add Funds</button>
             </div>
-          </div>
         </div>
     
         <div class="column">
@@ -63,12 +69,8 @@
         <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
           </div>
         <div class="box">
-            <div class="left">
-            <div>
-            <h1>Your Rental History</h1>
-            </div>
-            <div>
-            <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
+            <h1 style="position: sticky;top:0;background-color:var(--polynesian-blue-color);">Your Rental History</h1>
+              <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
               <div class="max-w-7xl mx-auto mt-12">
               <center>
                 <%= render "history", rentals: @rentals %>
