@@ -27,3 +27,8 @@
     display: table;
     clear: both;
   }
+
+  #bike-trail {
+    background-position: 50% 37%;
+    color: white;
+  }
