@@ -24,6 +24,7 @@
             </div>
             <br>
             <br><h1>User Info</h1>
+            <br>
             <div class="flexbox">
               First Name: <%= @user.first %>
             </div>
@@ -37,6 +38,7 @@
               <%# shows balance to 2 decimal places, even if it is a whole number %>
               Balance: $<%= sprintf("%.2f", @user.balance) %>
             </div>
+            <br>
             <script src="https://js.stripe.com/v3/"></script>
               <button class="profile_button" id="checkout-button">Add Funds</button>
             </div>
@@ -44,8 +46,11 @@
         </div>
     
         <div class="column">
+        <div class="speech-box">
+          <%# display number of hours a user has biked in whole hours %>
+        </div>
         <div ="container">
-        <div style="align-self: center; text-align: center;"><%= image_tag('viktor_snail_profile.png', alt: 'Viktor_Snail', style: 'width: 100px;') %></div>
+        <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
           </div>
         <div class="box">
           <%# display number of hours a user has biked in whole hours %>
@@ -59,9 +64,14 @@
             <% end %>
           </div>
             <div class="left">
-              <%= link_to history_path(current_user), class: "profile_button" do %>
-                View Ride History
-              <% end %>
+            <div>
+            <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
+              <div class="max-w-7xl mx-auto mt-12">
+              <center>
+                <%= render "history", rentals: @rentals %>
+                </center>
+              </div>
+        </div>
             </div>
           </div>
           </div>
