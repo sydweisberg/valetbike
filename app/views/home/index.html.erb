@@ -1,17 +1,16 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
-        <div="container">
-            <div class="row">
-                <div class="column">
-                    <div class="section-title">
-                        <% if user_signed_in? %>
-                        Welcome to Valet Bike, <%= current_user.first %>!
-                        <% else %>
-                        Welcome to Valet Bike, Riders!
-                        <% end %>
-                    </div>
-                    <% if active_rental? %>
+        <div class="section-title" id="bike-trail" style="background-image: url(<%= asset_path 'bike_trail.jpeg' %>);">
+            <br>
+            <center>
+            <% if user_signed_in? %>
+                Welcome to Vector Bike, <%= current_user.first %>!
+            <% else %>
+                Welcome to Vector Bike, Riders!
+            <% end %>
+            <div>
+            <% if active_rental? %>
                     <%= link_to rentals_path, class: "button" do %>
                     Rent a Bike!
                     <% end %>
@@ -20,23 +19,27 @@
                     Rent a Bike!
                     <% end %>
                     <% end %>
-                    <div>
-                        <h1>About Valet Bike</h1>
-                    </div>
-                    <div>
-                        <br>
-                        <p>Valet Bike is a bike share program located in Nipmuc Notch. Riders can rent electric bikes and return them to any bike station. Our service is great for commuters or casual riders.</p>
-                    </div>
-                    <br>
-                    <div>
+            </center>
+            <br>
+            </div>
+        </div>
+        <div="container">
+            <center>
+            <h1>About Vector Bike</h1>
+            </center>
+            <br>
+            <p style="margin-left: 10%; margin-right: 10%;">Valet Bike is a bike share program located in Nipmuc Notch. Riders can rent electric bikes and return them to any bike station. Our service is great for commuters or casual riders.</p>
+            <div class="row">
+                <div class="column">
+                    <center>
+                        <h1>Bike Share Locations</h1>
+                        <%= render(partial: 'layouts/map') %>
+                    </center>      
+                </div>
+                <div class="column">
+                    <center> 
                         <h1>Pricing</h1>
-                        <div>
-                            <br>
-                            <p>Valet Bike rides are priced in 15 minute increments.</p>
-                        </div>
-                        <br>
-                        <center>
-                        <table class="styled-table" style="width: 75%;">
+                        <table class="styled-table" style="width: 75%; margin-top: 0;">
                             <thead>
                                 <tr>
                                     <th class="no-link">Time</th>
@@ -78,16 +81,16 @@
                                 </tr>
                             </tbody>
                         </table>
-                        </center>
-                    </div>
-                </div>
-                <div class="centered_column">
-                <br>
-                    <h1>Bike Share Locations</h1>
-                    <br>
-                    <%= render(partial: 'layouts/map') %>
+                    </center>
                 </div>
             </div>
+            <br>
+            <center>
+            <h1>How to Use Vector Bike</h1>
+            <br>
+            <%= image_tag('viktor_steps.jpeg', alt: 'Vector Bike Steps', style: 'margin-left: 20px; margin-right: 20px; width: 80%;') %>
+            </center>
+            <br>
         </div>
     </div>
 </div>

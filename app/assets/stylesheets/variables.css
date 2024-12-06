@@ -1,6 +1,6 @@
 :root {
-  --title-font: "Rubik", "Arial";
-  --body-font: "Rubik", "Arial";
+  --title-font: "Gill Sans", sans-serif;
+  --body-font: "Gill Sans", sans-serif;
 
   /* Monochrome */
   --black-color: #160919;

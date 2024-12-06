@@ -2,15 +2,15 @@
     <thead>
         <tr>
             <th id="station-name">
-                <span><%= link_to "Station Name", :sort => "name"%> </span>
+                <span><%= link_to "Station Name", :sort => "name", view: @view%> </span>
             </th>
 
             <th id="address">
-                <span><%= link_to "Address", :sort => "address"%> </span>
+                <span><%= link_to "Address", :sort => "address", view: @view%> </span>
             </th>
 
             <th id="available-bikes">
-                <span><%= link_to "Available Bikes", :sort => "available_bikes"%> </span>
+                <span><%= link_to "Available Bikes", :sort => "available_bikes", view: @view%> </span>
             </th>
         </tr>
     </thead>
