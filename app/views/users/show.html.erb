@@ -11,7 +11,7 @@
     <div ="container">
       <div class="row">
           <div class="column">
-          <div class="box">
+          <div class="box1">
           <div class="left">
           <div class="section-title-centered">
             Hello, <%= @user.first %>!
@@ -29,13 +29,16 @@
               Delete Profile
             </div>
             <br>
-            <br><h1>User Info</h1>
+            <br><h1>Account Information</h1>
             <br>
             <div class="flexbox">
               First Name: <%= @user.first %>
             </div>
             <div class="flexbox">
               Last Name: <%= @user.last %>
+            </div>
+            <div class="flexbox">
+              Userame: <%= @user.username %>
             </div>
             <div class="flexbox">
               Email: <%= @user.email %>
@@ -61,6 +64,9 @@
           </div>
         <div class="box">
             <div class="left">
+            <div>
+            <h1>Your Rental History</h1>
+            </div>
             <div>
             <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
               <div class="max-w-7xl mx-auto mt-12">
