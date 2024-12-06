@@ -1,5 +1,5 @@
 <ul>
-    <li><%= link_to(image_tag('new_bike_icon.png', alt: 'Bike icon'), root_path) %></li>
+    <li><%= link_to(image_tag('viktor_snail.png', alt: 'Bike icon'), root_path) %></li>
     <% if user_signed_in? %>
     <li><%= button_to 'Log Out', logout_path, method: :delete, class: "header" %></li>
     <%= link_to user_path(current_user), class: "header" do %>
