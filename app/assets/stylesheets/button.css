@@ -40,3 +40,8 @@
   .button:hover {
     background-color: var(--button-hover-color);
   }
+
+  .profile_button {
+      background-color: var(--white-color);
+    }
+  

@@ -38,6 +38,16 @@
   background: var(--dark-white-color);
 }
 
+.box {
+  width: 95%;
+  height: 100%;
+  border: 4px solid var(--polynesian-blue-color);
+  border-radius: 5px;
+  background-color: var(--polynesian-blue-color);
+  padding: 10px;
+  margin: 10px;
+}
+
 
 /***********************************/
 /*         Responsiveness          */
