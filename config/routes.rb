@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/return', to: 'bikes#index'
   get '/users', to: 'users#index'
   resources :rentals
-  get '/history', to: 'users#history'
+  resources :users do
+    get 'history', on: :member
+  end
   get '/about', to: 'about#index'
   get '/signup', to: 'users#new', as: 'signup'
   resources :users, only: [:create, :update, :edit, :show, :destroy]
