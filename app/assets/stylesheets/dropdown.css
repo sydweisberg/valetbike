@@ -6,7 +6,6 @@
     width: 13%;
     height: 75%;
     overflow: auto;
-    border: 2.5px solid var(--white-color);
     border-radius: 5px;
 }
 
