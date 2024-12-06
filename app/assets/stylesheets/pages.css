@@ -47,6 +47,7 @@
   color: var(--white-color);
   padding: 10px;
   margin: 0px;
+  overflow: auto;
 }
 
 .speech-box {
@@ -54,12 +55,15 @@
   height: 50px;
   border: 4px solid var(--medium-gray-color);
   border-radius: 5px;
-  padding: 2px;
-  text-align: center;
-  font-weight: 900;
+  padding: 5px;
   color: var(--polynesian-blue-color);
+  text-align: center;
+  font-weight: 150;
+  color: var(--polynesian-blue-color);
+  font-size: larger;
   position:relative;
   align-self: center;
+  text-align: center;
 }
 
 .speech-box:before {
@@ -71,6 +75,9 @@
   border-right: 10px solid transparent;
   border-top: 10px solid var(--medium-gray-color);
   border-bottom: 10px solid transparent;
+  color: var(--polynesian-blue-color);
+  text-align: center;
+  font-size: larger;
   left: 20px;
   bottom: -20px;
 }

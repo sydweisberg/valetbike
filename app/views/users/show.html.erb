@@ -15,6 +15,12 @@
           <div class="left">
           <div class="section-title-centered">
             Hello, <%= @user.first %>!
+            <% top_users = User.order(hours: :desc).limit(10) %>
+            <% if top_users.include?(@user) %>
+            <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
+          <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
+        </span>
+            <% end %>
             </div>
             <%= link_to edit_user_path(current_user), class: "profile_button" do %>
               Edit Profile
@@ -47,22 +53,13 @@
     
         <div class="column">
         <div class="speech-box">
-          <%# display number of hours a user has biked in whole hours %>
+        <%# display number of hours a user has biked in whole hours %>
+        Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!
         </div>
         <div ="container">
         <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
           </div>
         <div class="box">
-          <%# display number of hours a user has biked in whole hours %>
-            <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
-            <div class="section-title-centered">
-            <% top_users = User.order(hours: :desc).limit(10) %>
-            <% if top_users.include?(@user) %>
-            <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
-          <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
-        </span>
-            <% end %>
-          </div>
             <div class="left">
             <div>
             <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
