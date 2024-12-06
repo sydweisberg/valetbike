@@ -42,7 +42,11 @@
             </div>
           </div>
         </div>
+    
         <div class="column">
+        <div ="container">
+        <div style="align-self: center; text-align: center;"><%= image_tag('viktor_snail.png', alt: 'Viktor_Snail', style: 'width: 100px;') %></div>
+          </div>
         <div class="box">
           <%# display number of hours a user has biked in whole hours %>
             <h1>Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
@@ -59,6 +63,7 @@
                 View Ride History
               <% end %>
             </div>
+          </div>
           </div>
           </div>
       </div>
