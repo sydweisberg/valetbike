@@ -3,6 +3,7 @@
     <div class="section-title-centered">
       Active Rentals
     </div>
+    <p>Click on a rental to view your rental countdown or return your bike.</p>
     <div>
         <% @rentals = Rental.where(user_id: @user.id, active: true) %>
           <div class="max-w-7xl mx-auto mt-12">
