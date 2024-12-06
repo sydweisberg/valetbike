@@ -6,7 +6,7 @@ class StationsController < ApplicationController
     else
       @stations = Station.all.order(params[:sort])
     end
-    @view = params[:view] || 'list'
+    @view = params[:view] || 'map'
   end
 
   def show
