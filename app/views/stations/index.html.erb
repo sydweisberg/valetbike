@@ -8,10 +8,15 @@
     <div>
       <% if @view == 'map' %>
       <br>
-        <div class="map-container">
+      <div>
+      <center>
+            <div style="dispay: inline;">
+            <div class="map-container">
             <%= render(partial: 'layouts/map') %>
             <%= render "dropdown", stations: @stations %>
-        </div>
+            </div>
+            </div>
+      </center>
       <% else %>
         <% if @stations.present? %>
           <div class="max-w-7xl mx-auto mt-12">
@@ -25,5 +30,6 @@
         </div>
         <% end %>
       <% end %>
+    </div>
     </div>
 </div>
