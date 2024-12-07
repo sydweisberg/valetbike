@@ -79,23 +79,6 @@ On each subsequent deployment, only `rails s` is required to launch the page. If
 - With at least one active rental, users are routed to the `View Bike Rentals` page when they click `Rent` or `Rent a Bike!`.
 - Users with fewer than five rentals can rent additional bikes; users at the limit see a message indicating they have reached the maximum number of rentals.
 - Once all rentals are returned, users are routed to the stations list when they click `Rent` or `Rent a Bike!`.
-### Summary of changes since prototype
-- Changes have been made to application styling
-- User password validations have been added
-- Users can now delete their accounts
-- Users can now have up to five rentals
-- Current rentals table has been added
-- Bike return success screen has been added
-- Users can now view ride history
-- Users can add funds
-- Bike rentals now cost money, and funds are deducted when users make a rental
-- Maps have station information embedded
-- Informative flash alerts have been added/styled
-- Picking station dropdown has been reworked (used to only be search), and filtering outs stations with no available bikes has been added
-- Stations dropdown has been added to return bike popup
-- Stations are sortable by bikes
-- Top ten user badge has been added
-- Branding has been added to UI
 
 ### Recommended walkthrough
 - Navigate to the sign up page, and sign up for an account.
