@@ -1,5 +1,13 @@
 <%# imports pop up js file %>
 <%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
+<style>
+  footer {
+    /* positions footer at bottom of page when page content does not fill view*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;   
+  }
+</style>
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
@@ -15,7 +23,7 @@
           &nbsp;
         </div>
         <br><br>
-        <div style="align-self: center; text-align: center;"><%= image_tag('bike_icon.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
+        <div style="align-self: center; text-align: center;"><%= image_tag('viktor_snail.png', alt: 'Bike icon', style: 'width: 100px;') %></div>
         <br><br>
         <% if flash[:alert] %>
           <div id="flash" onclick="close_flash()">
@@ -28,6 +36,7 @@
           <div class="button" onclick="popup()">
             Return Your Bike
           </div>
+          <br><br>
         <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
           <div style="text-align: left;">
             <h1>Would you like to return your bike?</h1>

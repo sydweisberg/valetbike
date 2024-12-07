@@ -3,9 +3,7 @@
   border-collapse: separate;
   margin: 2em 0;
   font-size: 0.9em;
-  font-family: sans-serif;
   min-width: 10%;
-  border: 5px solid var(--light-gray-color);
   border-radius: 10px;
   overflow: hidden;
   border-spacing: 0;
@@ -99,4 +97,24 @@
 /* row hover behavior (overrides alternating row color) */
 .styled-table tbody tr.link:nth-of-type(even):hover {
   background-color: var(--sky-blue-color);
+}
+
+/* body row every-other-row */
+#history-table tbody tr:nth-of-type(odd) {
+  background-color: var(--white-color);
+  color: black
+}
+
+#history-table tbody tr:nth-of-type(even) {
+  color: black
+}
+
+/* rounds upper lefmost corner of first row */
+#history-table tbody tr:nth-of-type(1) td:first-child {
+  border-top-left-radius: 10px;
+}
+
+/* rounds upper rightmost corner of first row */
+#history-table tbody tr:nth-of-type(1) td:last-child {
+  border-top-right-radius: 10px;
 }

@@ -27,3 +27,11 @@
     display: table;
     clear: both;
   }
+
+  #bike-trail {
+    background-position: 50% 92%;
+    color: black;
+    background-size: cover; /* Ensures the background image covers the entire area */
+    background-repeat: no-repeat;
+    justify-self: center;
+  }

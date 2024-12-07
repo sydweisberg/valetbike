@@ -3,7 +3,8 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-image: linear-gradient(rgba(91, 91, 91, 0.5), rgba(0, 0, 0, 0));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
   position: fixed;
   top: 0;
   width: 100%;
@@ -16,7 +17,7 @@ ul {
 .header {
   float: right;
   display: block;
-  color: var(--black);
+  color: var(--black-color);
   text-align: center;
   padding: 1rem 1rem;
   text-decoration: none;
@@ -27,7 +28,7 @@ ul {
 }
 
 .header:hover {
-  background-color: var(--sky-blue-color)
+  color: var(--sky-blue-color)
 }
 
 li:first-child {
@@ -35,10 +36,6 @@ li:first-child {
   float: left;
   padding: .5rem .5rem;
   margin-left: .5rem;
-}
-
-li:first-child:hover {
-  background-color: var(--medium-gray-color);
 }
 
 menu_icon {

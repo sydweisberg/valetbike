@@ -8,53 +8,83 @@
           <%= flash[:notice] %>
         </div>
     <% end %>
-    <div class="section-title-centered">
-      Hello, <%= @user.first %>!
-      <% top_users = User.order(hours: :desc).limit(10) %>
-      <% if top_users.include?(@user) %>
-      <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
-    <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
-  </span>
-      <% end %>
-    </div>
+    <br>
+    <br>
     <div ="container">
       <div class="row">
           <div class="column">
-          <%# display number of hours a user has biked in whole hours %>
-            <h1>Congrats, you have biked <%= (@user.hours || 0).truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!</h1>
-            <div class="left">
-              <%= link_to history_user_path(current_user), class: "button" do %>
-                View Ride History
-              <% end %>
+          <div class="box1">
+          <div class="container">
+          <div class="section-title-centered">
+            Hello, <%= @user.first %>!
+            <% top_users = User.order(hours: :desc).limit(10) %>
+            <% if top_users.include?(@user) %>
+            <div class="tooltip">
+            <span style="display: inline-block; vertical-align: top; margin-left: 10px;">
+            <%= image_tag('top_ten_badge.png', alt: 'Top Ten Badge', style: 'width: 60px;') %>
+            <span class="tooltiptext">You are in our top ten riders!</span>
+            </span>
             </div>
-          </div>
-          <div class="column">
-          <div class="left">
-            <%= link_to edit_user_path(current_user), class: "button" do %>
+            <% end %>
+             </div>
+            </div>
+            <%= link_to edit_user_path(current_user), class: "profile_button" do %>
               Edit Profile
             <% end %>
-            <div class="button" onclick="popup()">
+            <div class="profile_button" onclick="popup()">
               Delete Profile
             </div>
             <br>
-            <br><h1>User Info</h1>
+            <br>
+            <br><h1>Account Information</h1>
+            <br>
             <div class="flexbox">
               First Name: <%= @user.first %>
             </div>
+            <br>
             <div class="flexbox">
               Last Name: <%= @user.last %>
             </div>
+            <br>
+            <div class="flexbox">
+              Userame: <%= @user.username %>
+            </div>
+            <br>
             <div class="flexbox">
               Email: <%= @user.email %>
             </div>
+            <br>
             <div class="flexbox">
               <%# shows balance to 2 decimal places, even if it is a whole number %>
               Balance: $<%= sprintf("%.2f", @user.balance || 0.0) %>
             </div>
+            <br>
+            <br>
             <script src="https://js.stripe.com/v3/"></script>
-              <button class="button" id="checkout-button">Add Funds</button>
-          </div>
+              <button class="profile_button" id="checkout-button">Add Funds</button>
+            </div>
         </div>
+        <div class="column">
+        <div class="speech-box">
+        <%# display number of hours a user has biked in whole hours %>
+        Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!
+        </div>
+        <div ="container">
+        <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
+          </div>
+        <div class="box" id="table_box">
+            <h1 style="position: sticky; top: 0; background-color:var(--polynesian-blue-color); margin-left: 10px; padding-top: 10px; padding-bottom: 10px;">Your Rental History</h1>
+              <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
+              <div class="max-w-7xl mx-auto mt-12">
+              <center>
+                <%= render "history", rentals: @rentals %>
+                </center>
+              </div>
+        </div>
+            </div>
+          </div>
+          </div>
+          </div>
       </div>
       <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
         <div style="text-align: left;">
