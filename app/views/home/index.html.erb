@@ -1,17 +1,20 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
     <div class="section-inner flexbox vertical stretch">
-        <div class="section-title" id="bike-trail" style="background-image: url(<%= asset_path 'vector_on_a_ride.jpeg' %>);">
+        <div class="section-title" id="bike-trail" style="background-image: url(<%= asset_path 'vector_on_a_ride.jpeg' %>);width:100vw;align-self:center;">
             <br>
             <center>
+            <div style="text-shadow: 1px 0px 16px rgba(255,255,255,1);">
             <% if user_signed_in? %>
                 Welcome to Vector Bike, <%= current_user.first %>!
             <% else %>
                 Welcome to Vector Bike, Riders!
+                
             <% end %>
+            </div>
             <div>
             <% if active_rental? %>
-                    <%= link_to rentals_path, class: "button" do %>
+                    <%= link_to rentals_path, class: "button", id:"rent-a-bike" do %>
                     Rent a Bike!
                     <% end %>
                     <% else %>
