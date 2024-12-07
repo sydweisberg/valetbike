@@ -38,10 +38,6 @@ li:first-child {
   margin-left: .5rem;
 }
 
-li:first-child:hover {
-  background-color: var(--medium-gray-color);
-}
-
 menu_icon {
   height: 3rem;
 }
