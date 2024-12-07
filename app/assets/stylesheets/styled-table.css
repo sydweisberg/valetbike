@@ -58,7 +58,7 @@
   padding: 1em;
 }
 
-/* body row */ 
+/* body row */
 .styled-table tbody tr {
   border-bottom: 1px solid var(--light-gray-color);
 }
@@ -102,11 +102,11 @@
 /* body row every-other-row */
 #history-table tbody tr:nth-of-type(odd) {
   background-color: var(--white-color);
-  color: black
+  color: black;
 }
 
 #history-table tbody tr:nth-of-type(even) {
-  color: black
+  color: black;
 }
 
 /* rounds upper lefmost corner of first row */

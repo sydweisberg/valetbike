@@ -7,11 +7,11 @@
 /**************************************************************/
 
 .flexbox {
-  display: -webkit-box;   /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
-  display: -moz-box;      /* OLD: Firefox (buggy) */
-  display: -ms-flexbox;   /* MID: IE 10 */
-  display: -webkit-flex;  /* NEW, Chrome 21+ */
-  display: flex;          /* NEW: Opera 12.1, Firefox 22+ */
+  display: -webkit-box; /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box; /* OLD: Firefox (buggy) */
+  display: -ms-flexbox; /* MID: IE 10 */
+  display: -webkit-flex; /* NEW, Chrome 21+ */
+  display: flex; /* NEW: Opera 12.1, Firefox 22+ */
 }
 
 .flexbox.horizontal {
@@ -24,9 +24,9 @@
 
 .flexbox.horizontal-reverse {
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse; 
+  -webkit-box-direction: reverse;
   -moz-box-orient: horizontal;
-  -moz-box-direction: reverse; 
+  -moz-box-direction: reverse;
   -ms-flex-direction: row-reverse;
   -webkit-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -42,7 +42,7 @@
 
 .flexbox.vertical-reverse {
   -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse; 
+  -webkit-box-direction: reverse;
   -moz-box-orient: vertical;
   -moz-box-direction: reverse;
   -ms-flex-direction: column-reverse;

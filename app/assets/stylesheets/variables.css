@@ -22,17 +22,16 @@
   --dark-teal-color: #418ca0;
   --azure-color: #2196f3;
   --sky-blue-color: #5ec4e0;
-  --button-hover-color: #408CA0;
+  --button-hover-color: #408ca0;
 
   /* Opaque colors */
   --drop-shadow-opaque: rgba(0, 0, 0, 0.15);
 
   /* Colors to consider instead of white: */
-  --old-lace-color: #FDF5E6;
-  --cosmic-latte-color: #FFF8E7;
-  --floral-white-color: #FFFAF0;
-
+  --old-lace-color: #fdf5e6;
+  --cosmic-latte-color: #fff8e7;
+  --floral-white-color: #fffaf0;
 
   /* Colors outside theme */
-   --bg-blue-200: #bfdbfe; /* from application.tailwind.css */
+  --bg-blue-200: #bfdbfe; /* from application.tailwind.css */
 }

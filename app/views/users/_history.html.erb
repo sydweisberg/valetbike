@@ -4,7 +4,6 @@
             <th class="no-link" id="rental-number">
                 <span><%="Rental Number"%> </span>
             </th>
-
             <th class="no-link" id="start_time">
                 <span><%="Start Time"%> </span>
             </th>
@@ -32,9 +31,9 @@
             <td class="no-link"><%= rental.duration %> minutes</td>
             <td class="no-link"><%= rental.bike_id %></td>
             <td class="no-link"><% if rental.over_time == true %>
-                    <span style="color: red; font-weight: bold;">Yes</span>
+                <span style="color: red; font-weight: bold;">Yes</span>
                 <% else %>
-                    No
+                No
                 <% end %>
             </td>
         </tr>
