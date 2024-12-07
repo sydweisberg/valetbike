@@ -41,7 +41,7 @@ class RentalsController < ApplicationController
         redirect_to rentals_path, status: :unprocessable_entity
       end
       format.json { render json: @rental.errors, status: :unprocessable_entity }
-    elsif current_user.balance < amount
+    elsif (current_user.balance || 0) < amount
       format.html do
         flash.alert = "You do not have sufficient funds to rent this bike."
         redirect_to rentals_path, status: :unprocessable_entity
