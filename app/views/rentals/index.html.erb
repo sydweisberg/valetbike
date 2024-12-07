@@ -4,7 +4,9 @@
         Active Rentals
     </div>
     <center>
-        <p>Click on a rental to view your rental countdown or return your bike.</p>
+        <div style="font-size: 18px;">
+            <p>Click on a rental to view your rental countdown or return your bike.</p>
+        </div>
     </center>
     <div>
         <% @rentals = Rental.where(user_id: @user.id, active: true) %>
