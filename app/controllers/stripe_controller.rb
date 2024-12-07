@@ -9,8 +9,8 @@ class StripeController < ApplicationController
           quantity: 1,
         }],
         mode: 'payment',
-        success_url: "http://localhost:3000/stripe/success?session_id={CHECKOUT_SESSION_ID}", # We need to talk to Prof. Brewer about where to redirect
-        cancel_url: "http://localhost:3000/users/#{current_user.id}",
+        success_url: Rails.env.production? ? "https://vectorbike-ecfe326f48ab.herokuapp.com/stripe/success?session_id={CHECKOUT_SESSION_ID}" : "http://localhost:3000/stripe/success?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: Rails.env.production? ? "https://vectorbike-ecfe326f48ab.herokuapp.com/users/#{current_user.id}" : "http://localhost:3000/users/#{current_user.id}",
         client_reference_id: current_user.id
       })
 
