@@ -108,3 +108,13 @@
 #history-table tbody tr:nth-of-type(even) {
   color: black
 }
+
+/* rounds upper lefmost corner of first row */
+#history-table tbody tr:nth-of-type(1) td:first-child {
+  border-top-left-radius: 10px;
+}
+
+/* rounds upper rightmost corner of first row */
+#history-table tbody tr:nth-of-type(1) td:last-child {
+  border-top-right-radius: 10px;
+}
