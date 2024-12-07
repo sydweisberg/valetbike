@@ -4,9 +4,9 @@
         Rent a Bike!
     </div>
     <%= render(partial: 'stations/toggle') %>
-    <br>
     <center>
-    <p>To rent a bike, select the station you would like to rent from. This will bring you to a bike rental form.</p>
+    <br>
+        <p>To rent a bike, select the station you would like to rent from. This will bring you to a bike rental form.</p>
     </center>
     <div>
         <% if @view == 'map' %>
@@ -22,8 +22,8 @@
                                 </div>
                             </div>
                             <div class="column" style="width: 20%">
-                            <center>
-                                <%= render "dropdown", stations: @stations %>
+                                <center>
+                                    <%= render "dropdown", stations: @stations %>
                                 </center>
                             </div>
                         </div>
