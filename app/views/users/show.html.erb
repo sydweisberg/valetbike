@@ -67,7 +67,7 @@
         <div class="column">
         <div class="speech-box">
         <%# display number of hours a user has biked in whole hours %>
-        Congrats, you have biked <%= @user.hours.truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!
+        Congrats, you have biked <%= (@user.hours || 0).truncate() %> hours on <%= Rental.where(user_id: @user.id).count %> rides!
         </div>
         <div ="container">
         <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
