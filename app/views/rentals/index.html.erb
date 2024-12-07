@@ -1,22 +1,48 @@
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
     <div class="section-title-centered">
-      Active Rentals
+        Active Rentals
     </div>
     <div>
         <% @rentals = Rental.where(user_id: @user.id, active: true) %>
-          <div class="max-w-7xl mx-auto mt-12">
-          <center>
-            <%= render "rentals", rentals: @rentals %>
-            <% if Rental.where(user_id: session[:user_id], active: true).count < 5 %>
-            <%# button %>
-              <%= link_to stations_path, class: "button" do %>
+        <div class="max-w-7xl mx-auto mt-12">
+            <center>
+                <%= render "rentals", rentals: @rentals %>
+                <% if Rental.where(user_id: session[:user_id], active: true).count < 5 %>
+                <%# button %>
+                <%= link_to stations_path, class: "button" do %>
                 Rent Another Bike
-              <% end %>
-            <% else %>
+                <% end %>
+                <% else %>
                 <p>You have reached the maximum number of current bike rentals.</p>
-            <% end %>
+                <% end %>
+                <div class="button" onclick="popup()">
+                    Return All Rentals
+                </div>
+                <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
+                    <div style="text-align: left;">
+                        <h1>Would you like to return your bikes?</h1>
+                        <p>We hoped you enjoyed your ride.</p>
+                        <%# form to return the bike to a specific station %>
+                        <%# @rental.bike_id ensures that the bike_id is being passed as id, not the rental id %>
+                        <%= form_with url: return_rentals_path(@rentals), method: :patch, local: true do |form| %>
+                        <%= form.hidden_field :current_rental_ids, value: @rentals %>
+                        <div>
+                            <%# text field for the user to enter return station id %>
+                            <%= form.select :station_id, @stations.map {|station| [station.name, station.id]}.sort, { prompt: "Select a Station" },
+                id: "dropdown"
+            %>
+                        </div>
+                        <div style="display: flex; justify-content: space-around; margin: 0% 30%">
+                            <%# button to close popup (not return the bike) %>
+                            <div class="button return" onclick="close_popup()">
+                                Close
+                            </div>
+                            <%# button to submit the bike return %>
+                            <%= form.submit 'Return', class: "button submit" %>
+                        </div>
+                        <% end %>
             </center>
-          </div>
+        </div>
     </div>
 </div>

@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   end
   post 'create-checkout-session', to: 'stripe#create_checkout_session'
   get '/stripe/success', to: 'stripe#success', as: 'stripe_success'
+  resources :rentals do
+    collection do
+      patch 'return'
+    end
+  end
+
 end
