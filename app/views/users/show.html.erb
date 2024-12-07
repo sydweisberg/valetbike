@@ -72,7 +72,6 @@
                     </div>
                     <div="container">
                         <div style="align-self: center; text-align: center;"><%= image_tag('flipped_viktor.png', alt: 'Flipped_Snail', style: 'width: 100px;') %></div>
-                    </div>
                     <div class="box" id="table_box">
                         <h1 style="position: sticky; top: 0; background-color:var(--polynesian-blue-color); margin-left: 10px; padding-top: 10px; padding-bottom: 10px;">Your Rental History</h1>
                         <% @rentals = Rental.where(user_id: current_user.id, active: false) %>
