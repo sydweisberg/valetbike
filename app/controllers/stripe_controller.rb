@@ -33,6 +33,7 @@ class StripeController < ApplicationController
         amount_paid = session.amount_total / 100.0
         puts('3 amount calculated')
         Rails.logger.info '3 amount calculated'
+        user.skip_validation(:password)
         user.update_attribute(:balance, user.balance + amount_paid)
         puts('4 updated, maybe?')
         Rails.logger.info '4 updated, maybe?'
