@@ -10,7 +10,7 @@ ul {
   width: 100%;
   height: 50px;
   z-index: 10;
-  align-items:center;
+  align-items: center;
   vertical-align: middle;
 }
 
@@ -28,14 +28,14 @@ ul {
 }
 
 .header:hover {
-  color: var(--sky-blue-color)
+  color: var(--sky-blue-color);
 }
 
 li:first-child {
   width: 4rem;
   float: left;
-  padding: .5rem .5rem;
-  margin-left: .5rem;
+  padding: 0.5rem 0.5rem;
+  margin-left: 0.5rem;
 }
 
 menu_icon {

@@ -13,7 +13,8 @@
   margin-left: 1.4em;
 }
 
-.page-section .section-title, .page-section .section-title-centered {
+.page-section .section-title,
+.page-section .section-title-centered {
   font-family: var(--title-font);
   font-weight: 500;
   font-size: 2.5em;
@@ -38,7 +39,8 @@
   background: var(--dark-white-color);
 }
 
-.box, .box1 {
+.box,
+.box1 {
   width: 95%;
   height: 500px;
   border: 4px solid var(--polynesian-blue-color);
@@ -67,7 +69,7 @@
   color: var(--polynesian-blue-color);
   text-align: center;
   font-size: calc(.7vw + .7vh);
-  position:relative;
+  position: relative;
   align-self: center;
 }
 
