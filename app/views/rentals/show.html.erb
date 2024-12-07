@@ -1,5 +1,13 @@
 <%# imports pop up js file %>
 <%= javascript_include_tag "pop_up", "data-turbolinks-track" => true  %>
+<style>
+  footer {
+    /* positions footer at bottom of page when page content does not fill view*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;   
+  }
+</style>
 <%= render(partial: 'layouts/header') %>
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
