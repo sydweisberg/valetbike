@@ -39,6 +39,7 @@
   height: 2.5rem;
   border: 2.5px solid var(--black-color);
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .button:hover {
