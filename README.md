@@ -18,7 +18,7 @@ MYSQL_USERNAME=<your_username>
 MYSQL_PASSWORD=<your_password>
 MYSQL_SOCKET=<path_to_socket>.sock
 ```
-Make a [Stripe account](https://stripe.com/) and generate a test API key. Store the key in your `.env` file as `STRIPE_SECRET_KEY`.
+For access to the Stripe API, please reach out to Sydney Weisberg for the secret key. Store the key in your `.env` file as `STRIPE_SECRET_KEY`.
 
 Execute the following commands from your repository directory:
 ```rb
