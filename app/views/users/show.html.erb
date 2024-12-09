@@ -36,8 +36,8 @@
                         </div>
                         <br>
                         <br>
-                        <br>
                         <h1>Account Information</h1>
+                        <div style="font-size: 18px;">
                         <br>
                         <div class="flexbox">
                             First Name: <%= @user.first %>
@@ -60,7 +60,7 @@
                             Balance: $<%= sprintf("%.2f", @user.balance || 0.0) %>
                         </div>
                         <br>
-                        <br>
+                        </div>
                         <script src="https://js.stripe.com/v3/"></script>
                         <button class="profile_button" id="checkout-button">Add Funds</button>
                     </div>
