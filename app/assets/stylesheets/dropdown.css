@@ -1,11 +1,12 @@
 /* Dropdown Content */
 .dropdown-content {
   position: absolute;
-  background-color: var(--slate-gray-color);
-  min-height: 25%;
+  background-color: var(--medium-gray-color);
   max-height: 75%;
   overflow: auto;
   border-radius: 5px;
+  min-width: 15%;
+  min-height: 6rem;
 }
 
 /* Links inside the dropdown */
