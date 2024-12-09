@@ -68,7 +68,7 @@
   padding: 5px;
   color: var(--polynesian-blue-color);
   text-align: center;
-  font-size: calc(.9vw + .9vh);
+  font-size: calc(.7vw + .7vh);
   position: relative;
   align-self: center;
 }
