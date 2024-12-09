@@ -31,7 +31,3 @@
   border: 2.5px solid var(--slate-gray-color);
   border-radius: 5px;
 }
-
-.dropdown-content {
-  margin-left: 1%;
-}

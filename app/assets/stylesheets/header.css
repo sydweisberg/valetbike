@@ -34,8 +34,9 @@ ul {
 li:first-child {
   width: 4rem;
   float: left;
-  padding: 0.5rem 0.5rem;
   margin-left: 0.5rem;
+  width: 60px;
+  height: 50px;
 }
 
 menu_icon {
