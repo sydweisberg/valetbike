@@ -56,12 +56,7 @@
                         </div>
                         <br>
                         <div class="flexbox">
-                            <%# shows balance to 2 decimal places, even if it is a whole number %>
-                            <% if @user.balance.zero? %>
-                            Balance: &nbsp;<span style="color: red"><strong> Empty! </strong></span>&nbsp; Click below to add funds to your account.
-                            <% else %>
                             Balance: $<%= sprintf("%.2f", @user.balance || 0.0) %>
-                            <% end %>
                         </div>
                         <br>
                         </div>
