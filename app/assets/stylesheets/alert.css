@@ -5,7 +5,7 @@
   border-radius: 10px;
   border-width: 2px;
   border-color: black;
-  font-size: medium;
+  font-size: large;
   width: fit-content;
   align-self: center;
   text-align: center;
@@ -35,7 +35,7 @@
   border-radius: 6px;
   top: -5px;
   left: 105%;
-  font-size: 12px;
+  font-size: 16px;
 
   /* Position the tooltip text - see examples below! */
   position: absolute;

@@ -25,9 +25,17 @@ class StripeController < ApplicationController
       session = Stripe::Checkout::Session.retrieve(session_id)
 
       if session.payment_status == 'paid'
+        puts('1 session payment status paid')
+        Rails.logger.info '1 session payment status paid'
         user = User.find(session.client_reference_id)
+        puts('2 user found')
+        Rails.logger.info '2 user found'
         amount_paid = session.amount_total / 100.0
+        puts('3 amount calculated')
+        Rails.logger.info '3 amount calculated'
         user.update_attribute(:balance, user.balance + amount_paid)
+        puts('4 updated, maybe?')
+        Rails.logger.info '4 updated, maybe?'
         # these do not work :(
         flash[:notice] = "Payment successful! Your balance is now $#{user.balance}0"
       else

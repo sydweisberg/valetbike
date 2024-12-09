@@ -2,7 +2,7 @@
 .styled-table {
   border-collapse: separate;
   margin: 2em 0;
-  font-size: 0.9em;
+  font-size: 1em;
   min-width: 10%;
   border-radius: 10px;
   overflow: hidden;

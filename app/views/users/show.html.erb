@@ -36,8 +36,8 @@
                         </div>
                         <br>
                         <br>
-                        <br>
                         <h1>Account Information</h1>
+                        <div style="font-size: 18px;">
                         <br>
                         <div class="flexbox">
                             First Name: <%= @user.first %>
@@ -57,10 +57,14 @@
                         <br>
                         <div class="flexbox">
                             <%# shows balance to 2 decimal places, even if it is a whole number %>
+                            <% if @user.balance.zero? %>
+                            Balance: &nbsp;<span style="color: red"><strong> Empty! </strong></span>&nbsp; Click below to add funds to your account.
+                            <% else %>
                             Balance: $<%= sprintf("%.2f", @user.balance || 0.0) %>
+                            <% end %>
                         </div>
                         <br>
-                        <br>
+                        </div>
                         <script src="https://js.stripe.com/v3/"></script>
                         <button class="profile_button" id="checkout-button">Add Funds</button>
                     </div>
@@ -83,8 +87,9 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
+</div>
+</div>
 </div>
 <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: right">
     <div style="text-align: left;">
